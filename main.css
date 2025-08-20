@@ -56,4 +56,12 @@ html {
   line-height: 75%;
   padding-top: 60px;
   padding-left: 40px;
+}
+
+.skills__list {
+  width: 50%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  font-size: 3rem;
+  text-align: center;
 }/*# sourceMappingURL=main.css.map */

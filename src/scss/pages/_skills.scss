@@ -1,0 +1,9 @@
+.skills {
+    &__list {
+        width: 50%;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        font-size: 3rem;
+        text-align: center;
+    }
+}
