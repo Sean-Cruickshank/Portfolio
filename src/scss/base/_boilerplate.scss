@@ -1,5 +1,6 @@
 html {
     background: #030020;
+    background: linear-gradient(#030020, #140033 100%);
     min-height: 100vh;
 }
 
@@ -19,4 +20,13 @@ html {
 
 *, *::before, *::after {
     box-sizing: inherit;
+}
+
+main {
+    width: 80%;
+    padding: 30px;
+}
+
+.active {
+    opacity: 1 !important;
 }

@@ -1,5 +1,6 @@
 html {
   background: #030020;
+  background: linear-gradient(#030020, #140033 100%);
   min-height: 100vh;
 }
 
@@ -21,6 +22,15 @@ html {
   box-sizing: inherit;
 }
 
+main {
+  width: 80%;
+  padding: 30px;
+}
+
+.active {
+  opacity: 1 !important;
+}
+
 html {
   color: var(--text);
 }
@@ -37,31 +47,40 @@ html {
   --text: rgb(194, 194, 194) ;
 }
 
-.social {
-  position: absolute;
-  top: 30px;
-  right: 30px;
-  display: grid;
-  grid-template-columns: 1fr;
-}
-.social__icon {
-  font-size: 3rem;
-  margin-bottom: 30px;
-  color: var(--text);
-}
-
 .headers {
-  width: 60%;
   text-align: center;
   line-height: 75%;
   padding-top: 60px;
   padding-left: 40px;
 }
 
-.skills__list {
-  width: 50%;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  font-size: 3rem;
+.skills {
   text-align: center;
+  background-color: #07001a;
+  border-radius: 20px;
+  padding: 5px;
+}
+.skills__list {
+  display: flex;
+  justify-content: space-around;
+  font-size: 4rem;
+  margin: 50px 0px;
+}
+
+.social {
+  position: fixed;
+  top: 30px;
+  right: 30px;
+  display: grid;
+  grid-template-columns: 1fr;
+}
+.social__icon {
+  opacity: 0;
+  font-size: 3rem;
+  margin-bottom: 30px;
+  color: var(--text);
+  transition: 0.3s;
+}
+.social__icon:hover {
+  transform: scale(0.9);
 }/*# sourceMappingURL=main.css.map */

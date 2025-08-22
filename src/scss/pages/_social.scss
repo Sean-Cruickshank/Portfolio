@@ -1,0 +1,19 @@
+.social {
+    position: fixed;
+    top: 30px;
+    right: 30px;
+    display: grid;
+    grid-template-columns: 1fr;
+
+    &__icon {
+        opacity: 0;
+        font-size: 3rem;
+        margin-bottom: 30px;
+        color: var(--text);
+        transition: 0.3s;
+
+        &:hover {
+            transform: scale(0.9);
+        }
+    }
+}

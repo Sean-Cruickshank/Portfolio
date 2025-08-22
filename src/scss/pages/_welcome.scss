@@ -1,19 +1,4 @@
-.social {
-    position: absolute;
-    top: 30px;
-    right: 30px;
-    display: grid;
-    grid-template-columns: 1fr;
-
-    &__icon {
-        font-size: 3rem;
-        margin-bottom: 30px;
-        color: var(--text);
-    }
-}
-
 .headers {
-    width: 60%;
     text-align: center;
     line-height: 75%;
     padding-top: 60px;

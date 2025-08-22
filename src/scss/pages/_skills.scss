@@ -1,9 +1,13 @@
 .skills {
+    text-align: center;
+    background-color: rgba($color: #07001a, $alpha: 1);
+    border-radius: 20px;
+    padding: 5px;
+    
     &__list {
-        width: 50%;
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
-        font-size: 3rem;
-        text-align: center;
+        display: flex;
+        justify-content: space-around;
+        font-size: 4rem;
+        margin: 50px 0px;
     }
 }
