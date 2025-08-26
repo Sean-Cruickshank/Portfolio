@@ -1,0 +1,27 @@
+.projects {
+    &__card {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+
+    &__title {
+        display: flex;
+        position: relative;
+        margin-bottom: 0;
+
+        & a {
+            position: absolute;
+            right: -30px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        & h3 {
+            margin: 5px 0;
+        }
+    }
+
+    &__image {
+        width: 100%;
+    }
+}
