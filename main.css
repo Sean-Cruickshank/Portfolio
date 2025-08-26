@@ -25,6 +25,7 @@ html {
 main {
   width: 80%;
   padding: 30px;
+  margin-inline: auto;
   text-align: center;
 }
 
@@ -36,12 +37,16 @@ html {
   color: var(--text);
 }
 
-.headers h1 {
+h1 {
   font-size: 6rem;
 }
 
-.headers h2 {
+h2 {
   font-size: 3rem;
+}
+
+h3 {
+  font-size: 2rem;
 }
 
 :root {
@@ -92,8 +97,12 @@ html {
   display: grid;
   grid-template-columns: 1fr 1fr;
 }
-.projects__title {
+.projects__info {
   display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.projects__title {
   position: relative;
   margin-bottom: 0;
 }
@@ -107,5 +116,5 @@ html {
   margin: 5px 0;
 }
 .projects__image {
-  width: 100%;
+  width: 80%;
 }/*# sourceMappingURL=main.css.map */
