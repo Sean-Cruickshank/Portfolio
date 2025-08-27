@@ -16,7 +16,7 @@ export const projectData = [
     description: [
       "An interactive and educational space facts website. Each page contains a ranking of different space objects, from smallest to largest, based on a specific theme.",
       "This was one of my first attempts at creating a live website, and although it is pretty simple I learned a lot while making it.",
-      "Utilises react-router and React hooks."
+      "I also thought it was a cool domain name to own 😎"
     ],
   },
   {

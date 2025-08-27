@@ -29,6 +29,7 @@ main {
     text-align: center;
 }
 
-.active {
-    opacity: 1 !important;
+.hidden {
+    opacity: 0 !important;
+    pointer-events: none !important;
 }

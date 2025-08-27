@@ -29,8 +29,9 @@ main {
   text-align: center;
 }
 
-.active {
-  opacity: 1 !important;
+.hidden {
+  opacity: 0 !important;
+  pointer-events: none !important;
 }
 
 html {
@@ -77,19 +78,37 @@ h3 {
 
 .social {
   position: fixed;
-  top: 30px;
-  right: 30px;
+  top: 15px;
+  right: 15px;
+  gap: 30px;
   display: grid;
   grid-template-columns: 1fr;
 }
 .social__icon {
-  opacity: 0;
   font-size: 3rem;
-  margin-bottom: 30px;
+}
+
+.to-top {
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  bottom: 15px;
+  right: 15px;
+  width: 3rem;
+  aspect-ratio: 1;
+}
+.to-top__icon {
+  font-size: 2rem;
+  display: none;
+}
+
+.icon {
   color: var(--text);
   transition: 0.3s;
+  cursor: pointer;
 }
-.social__icon:hover {
+.icon:hover {
   transform: scale(0.9);
 }
 

@@ -1,19 +1,40 @@
 .social {
     position: fixed;
-    top: 30px;
-    right: 30px;
+    top: 15px;
+    right: 15px;
+    gap: 30px;
     display: grid;
     grid-template-columns: 1fr;
 
     &__icon {
-        opacity: 0;
         font-size: 3rem;
-        margin-bottom: 30px;
-        color: var(--text);
-        transition: 0.3s;
+    }
+}
 
-        &:hover {
-            transform: scale(0.9);
-        }
+.to-top {
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    bottom: 15px;
+    right: 15px;
+    width: 3rem;
+    aspect-ratio: 1;
+
+    &__icon {
+        font-size: 2rem;
+        // opacity: 0;
+        display: none;
+    }
+}
+
+.icon {
+    // opacity: 0;
+    color: var(--text);
+    transition: 0.3s;
+    cursor: pointer;
+
+    &:hover {
+        transform: scale(0.9);
     }
 }
