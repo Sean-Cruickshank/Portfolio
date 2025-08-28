@@ -1,6 +1,5 @@
 html {
   background: #030020;
-  background: linear-gradient(#030020, #140033 100%);
   min-height: 100vh;
 }
 
@@ -24,7 +23,7 @@ html {
 
 main {
   width: 80%;
-  padding: 30px;
+  padding-inline: 30px;
   margin-inline: auto;
   text-align: center;
 }
@@ -54,17 +53,28 @@ h3 {
   --text: rgb(194, 194, 194) ;
 }
 
-.headers {
+.welcome {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 90vh;
+  margin-bottom: 10vh;
+}
+.welcome__headers {
   text-align: center;
   line-height: 75%;
-  padding-top: 60px;
-  padding-left: 40px;
+  transition: 4s;
 }
 
 .skills {
   text-align: center;
   border-radius: 20px;
   padding: 5px;
+}
+.skills__main {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 }
 .skills__list {
   display: flex;
@@ -74,6 +84,18 @@ h3 {
 }
 .skills__icon {
   padding: 10px;
+}
+.skills__subtitle {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: darkgoldenrod;
+}
+.skills__subtitle h3 {
+  width: 70%;
+}
+.skills__subtitle i {
+  font-size: 3rem;
 }
 
 .social {

@@ -1,6 +1,6 @@
 html {
     background: #030020;
-    background: linear-gradient(#030020, #140033 100%);
+    // background: linear-gradient(#030020, #140033 100%);
     min-height: 100vh;
 }
 
@@ -24,7 +24,7 @@ html {
 
 main {
     width: 80%;
-    padding: 30px;
+    padding-inline: 30px;
     margin-inline: auto;
     text-align: center;
 }

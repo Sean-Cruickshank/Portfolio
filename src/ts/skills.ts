@@ -23,6 +23,7 @@ const miscSkills = [
   { name: "SQL", icon: "devicon-azuresqldatabase-plain"},
   { name: "Azure Fundamentals", icon: "devicon-azure-plain"},
   { name: "Git/GitHub", icon: "devicon-git-plain"},
+  { name: "Python", icon: "devicon-python-plain"},
 ]
 
 function handleUI(arr: skillArray[]) {

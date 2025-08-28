@@ -10,25 +10,27 @@
 </head>
 <body>
   <main>
-    <div class="headers">
-      <h1>Sean Cruickshank</h1>
-      <h2>Software Developer</h2>
-    </div>
-
     <div class="social">
-      <a class="social__icon hidden" href="https://www.facebook.com/SeanCruickshank1997/" target="_blank">
-        <i class="icon fa-brands fa-facebook"></i>
+      <a class="social__icon hidden icon" href="https://www.facebook.com/SeanCruickshank1997/" target="_blank">
+        <i class="fa-brands fa-facebook"></i>
       </a>
-      <a class="social__icon hidden" href="https://github.com/Sean-Cruickshank" target="_blank">
-        <i class="icon fa-brands fa-github"></i>
+      <a class="social__icon hidden icon" href="https://github.com/Sean-Cruickshank" target="_blank">
+        <i class="fa-brands fa-github"></i>
       </a>
-      <a class="social__icon hidden" href="https://www.linkedin.com/in/seancruickshank/" target="_blank">
-        <i class="icon fa-brands fa-linkedin"></i>
+      <a class="social__icon hidden icon" href="https://www.linkedin.com/in/seancruickshank/" target="_blank">
+        <i class="fa-brands fa-linkedin"></i>
       </a>
     </div>
 
     <div class="to-top">
       <i class="to-top__icon hidden icon fa-solid fa-circle-chevron-up"></i>
+    </div>
+
+    <div class="welcome">
+      <div class="welcome__headers hidden">
+        <h1>Sean Cruickshank</h1>
+        <h2>Software Developer</h2>
+      </div>
     </div>
 
     <div class="about">
@@ -37,17 +39,22 @@
 
     <div class="skills">
       <h2>Tech Stack</h2>
+      <div class="skills__main">
+        <div>
+          <div class="skills__styling skills__list"></div>
+          <div class="skills__js skills__list"></div>
+          <div class="skills__misc skills__list"></div>
+        </div>
 
-      <div>
-        <div class="skills__styling skills__list"></div>
-      </div>
-
-      <div>
-        <div class="skills__js skills__list"></div>
-      </div>
-
-      <div>
-        <div class="skills__misc skills__list"></div>
+        <div>
+          <div class="skills__subtitle">
+            <i class="fa-solid fa-caret-left"></i>
+            <h3>Styling aqnd Shit</h3>
+            <i class="fa-solid fa-caret-right"></i>
+          </div>
+          
+          <p>This is text describiing my skills</p>
+        </div>
       </div>
     </div>
 
@@ -58,8 +65,8 @@
 
   </main>
 
-  <script type="module" src="./src/ts/skills.ts"></script>
-  <script type="module" src="./src/ts/social.ts"></script>
-  <script type="module" src="./src/ts/projects.ts"></script>
+  <script type="module" src="./src/ts/index.ts"></script>
+  <!-- <script type="module" src="./src/ts/social.ts"></script>
+  <script type="module" src="./src/ts/projects.ts"></script> -->
 </body>
 </html>
