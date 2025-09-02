@@ -1,5 +1,7 @@
 html {
   background: #030020;
+  background: linear-gradient(130deg, #04002e 0% 5%, #030020 100%);
+  background-attachment: fixed;
   min-height: 100vh;
 }
 
@@ -89,13 +91,19 @@ h3 {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  background-color: darkgoldenrod;
 }
 .skills__subtitle h3 {
   width: 70%;
 }
-.skills__subtitle i {
+.skills__subtitle button {
   font-size: 3rem;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  color: var(--text);
+}
+.skills__subtitle button:active {
+  transform: scale(0.9);
 }
 
 .social {
