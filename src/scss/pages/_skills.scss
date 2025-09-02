@@ -2,42 +2,16 @@
     text-align: center;
     border-radius: 20px;
     padding: 5px;
-
-    &__main {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-    }
     
     &__list {
         display: flex;
-        justify-content: center;
-        font-size: 4rem;
+        justify-content: space-around;
+        align-items: center;
         margin: 50px 0px;
     }
 
-    &__icon {
+    &__icon i {
         padding: 10px;
-    }
-
-    &__subtitle {
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
-
-        & h3 {
-            width: 70%;
-        }
-
-        & button {
-            font-size: 3rem;
-            border: none;
-            background-color: transparent;
-            cursor: pointer;
-            color: var(--text);
-
-            &:active {
-                transform: scale(0.9);
-            }
-        }
+        font-size: 4rem;
     }
 }

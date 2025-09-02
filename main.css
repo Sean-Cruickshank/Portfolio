@@ -27,6 +27,7 @@ main {
   width: 80%;
   padding-inline: 30px;
   margin-inline: auto;
+  margin-bottom: 200px;
   text-align: center;
 }
 
@@ -51,6 +52,10 @@ h3 {
   font-size: 2rem;
 }
 
+p {
+  font-size: 1.25rem;
+}
+
 :root {
   --text: rgb(194, 194, 194) ;
 }
@@ -66,7 +71,7 @@ h3 {
 .welcome__headers {
   text-align: center;
   line-height: 75%;
-  transition: 4s;
+  transition: 3s;
 }
 
 .skills {
@@ -74,36 +79,15 @@ h3 {
   border-radius: 20px;
   padding: 5px;
 }
-.skills__main {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-}
 .skills__list {
-  display: flex;
-  justify-content: center;
-  font-size: 4rem;
-  margin: 50px 0px;
-}
-.skills__icon {
-  padding: 10px;
-}
-.skills__subtitle {
   display: flex;
   justify-content: space-around;
   align-items: center;
+  margin: 50px 0px;
 }
-.skills__subtitle h3 {
-  width: 70%;
-}
-.skills__subtitle button {
-  font-size: 3rem;
-  border: none;
-  background-color: transparent;
-  cursor: pointer;
-  color: var(--text);
-}
-.skills__subtitle button:active {
-  transform: scale(0.9);
+.skills__icon i {
+  padding: 10px;
+  font-size: 4rem;
 }
 
 .social {

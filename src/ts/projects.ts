@@ -2,7 +2,7 @@ export const projectData = [
   {
     title: "coolspacefacts.com",
     link: "https://coolspacefacts.com/",
-    date: "2023 - 2024",
+    date: "2023",
     image: "images/cool_space_facts.png",
     tagsText: [
       "HTML5", "CSS3", "JavaScript", "React"
