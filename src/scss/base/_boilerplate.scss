@@ -35,4 +35,9 @@ main {
 .hidden {
     opacity: 0 !important;
     pointer-events: none !important;
+
+    &__fade {
+        opacity: 0 !important;
+        padding-top: 40px;
+    }
 }

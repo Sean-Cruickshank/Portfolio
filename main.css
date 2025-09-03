@@ -35,6 +35,10 @@ main {
   opacity: 0 !important;
   pointer-events: none !important;
 }
+.hidden__fade {
+  opacity: 0 !important;
+  padding-top: 40px;
+}
 
 html {
   color: var(--text);
@@ -84,6 +88,7 @@ p {
   justify-content: space-around;
   align-items: center;
   margin: 50px 0px;
+  transition: 0.5s;
 }
 .skills__icon i {
   padding: 10px;
