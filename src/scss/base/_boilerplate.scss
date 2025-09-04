@@ -37,7 +37,7 @@ main {
     pointer-events: none !important;
 
     &__fade {
-        opacity: 0 !important;
+        @extend .hidden;
         padding-top: 40px;
     }
 }

@@ -23,13 +23,11 @@
 
     &__icon {
         font-size: 2rem;
-        // opacity: 0;
         display: none;
     }
 }
 
 .icon {
-    // opacity: 0;
     color: var(--text);
     transition: 0.3s;
     cursor: pointer;
