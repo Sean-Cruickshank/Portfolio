@@ -23,7 +23,7 @@ const data = [
     description: [
       "I try to use TypeScript by default now. Next.JS is pretty cool but I've only used it once"
     ],
-    render: { flag: false, breakpoint: 500 },
+    render: { flag: false, breakpoint: 600 },
     array: [
       { name: "JavaScript", icon: "devicon-javascript-plain"},
       { name: "TypeScript", icon: "devicon-typescript-plain"},
@@ -36,7 +36,7 @@ const data = [
     description: [
       'Just some random other shit I know'
     ],
-    render: { flag: false, breakpoint: 700 },
+    render: { flag: false, breakpoint: 900 },
     array: [
       { name: ".NET Core", icon: "devicon-dotnetcore-plain"},
       { name: "SQL", icon: "devicon-azuresqldatabase-plain"},
@@ -49,7 +49,7 @@ const data = [
       'Passed my Azure Fundamentals cert in March 2025.',
       'I have only ever committed to dev one time accidentally'
     ],
-    render: { flag: false, breakpoint: 900 },
+    render: { flag: false, breakpoint: 1200 },
     array: [
       { name: "Azure", icon: "devicon-azure-plain"},
       { name: "Git", icon: "devicon-git-plain"},
@@ -110,6 +110,6 @@ function renderSkills(category: string) {
       setTimeout(() => {
           icon.classList.remove('hidden__fade')
       }, delay)
-      delay+= 1000
+      delay+= 150
   })
 }

@@ -36,7 +36,7 @@ main {
   pointer-events: none !important;
 }
 .hidden__fade {
-  padding-top: 40px;
+  transform: translateY(40px);
 }
 
 html {
@@ -60,7 +60,7 @@ p {
 }
 
 :root {
-  --text: rgb(194, 194, 194) ;
+  --text: #c2c2c2;
 }
 
 .welcome {
@@ -84,14 +84,14 @@ p {
 }
 .skills__list {
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
   margin: 50px 0px;
 }
-.skills__icon i {
-  padding: 10px;
+.skills__icon {
+  padding: 10px 50px;
   font-size: 4rem;
-  transition: 2.5s;
+  transition: 0.5s;
 }
 
 .social {
@@ -148,9 +148,17 @@ p {
   right: -30px;
   top: 50%;
   transform: translateY(-50%);
+  color: var(--text);
 }
 .projects__title h3 {
   margin: 5px 0;
+}
+.projects__icons {
+  margin-top: 40px;
+}
+.projects__icon {
+  font-size: 3rem;
+  padding: 0 30px;
 }
 .projects__image {
   width: 80%;

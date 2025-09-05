@@ -38,6 +38,6 @@ main {
 
     &__fade {
         @extend .hidden;
-        padding-top: 40px;
+        transform: translateY(40px)
     }
 }

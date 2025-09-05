@@ -19,11 +19,21 @@
             right: -30px;
             top: 50%;
             transform: translateY(-50%);
+            color: var(--text);
         }
 
         & h3 {
             margin: 5px 0;
         }
+    }
+
+    &__icons {
+        margin-top: 40px;
+    }
+
+    &__icon {
+        font-size: 3rem;
+        padding: 0 30px;
     }
 
     &__image {
