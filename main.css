@@ -133,6 +133,7 @@ p {
 .projects__card {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  margin-bottom: 200px;
 }
 .projects__info {
   display: flex;
@@ -160,6 +161,31 @@ p {
   font-size: 3rem;
   padding: 0 30px;
 }
+.projects__gallery {
+  position: relative;
+}
+.projects__gallery .image__1 {
+  top: 10%;
+  left: 0;
+}
+.projects__gallery .image__2 {
+  top: 50%;
+  left: 30%;
+}
+.projects__gallery .image__3 {
+  top: 0%;
+  left: 60%;
+}
 .projects__image {
-  width: 80%;
+  width: 60%;
+  position: absolute;
+}
+
+.about p {
+  font-size: 1.4rem;
+  line-height: 200%;
+}
+.about b {
+  font-size: 1.6rem;
+  font-style: italic;
 }/*# sourceMappingURL=main.css.map */

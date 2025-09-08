@@ -3,7 +3,11 @@ export const projectData = [
     title: "coolspacefacts.com",
     link: "https://coolspacefacts.com/",
     date: "2023",
-    image: "images/cool_space_facts.png",
+    gallery: [
+      "images/cool_space_facts/csp_standard.png",
+      "images/cool_space_facts/csp_mobile.png",
+      "images/cool_space_facts/csp_wide.png",
+    ],
     tagsText: [
       "HTML5", "CSS3", "JavaScript", "React"
     ],
@@ -23,7 +27,11 @@ export const projectData = [
     title: "Tile Game",
     link: "/tilegame",
     date: "2024",
-    image: "images/tile_game.png",
+    gallery: [
+      "images/tile_game/level_one.png",
+      "images/tile_game/level_four.png",
+      "images/tile_game/level_five.png",
+    ],
     tagsText: [
       "HTML5", "CSS3", "JavaScript", "React"
     ],
@@ -78,14 +86,25 @@ projectData.forEach(project => {
         <div class="projects__paragraphs">${paragraphs}</div>
         <div class="projects__icons">${projectListTags}</div>
       </div>
-
-      <div class="projects__gallery">
-        <img class="projects__image" src=${project.image} />
-      </div>
+      ${createGallery(project.gallery)}
       
     </div>
   `
 })
+
+function createGallery(array: string[]) {
+  let galleryHTML = ''
+  let count = 1
+  array.forEach(image => {
+    count <= 3 ? galleryHTML+= `<img class="projects__image image__${count}" src=${image} />` : null
+    count++
+  })
+  return `
+    <div class="projects__gallery">
+    ${galleryHTML}
+    </div>
+  `
+}
 
 const list = document.querySelector('.projects__list')
 if (list) list.innerHTML = projectListHTML

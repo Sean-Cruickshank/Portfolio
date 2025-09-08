@@ -2,6 +2,7 @@
     &__card {
         display: grid;
         grid-template-columns: 1fr 1fr;
+        margin-bottom: 200px;
     }
 
     &__info {
@@ -36,7 +37,26 @@
         padding: 0 30px;
     }
 
+    &__gallery {
+        position: relative;
+        & .image__1 {
+            top: 10%;
+            left: 0;
+        }
+
+        & .image__2 {
+            top: 50%;
+            left: 30%;
+        }
+
+        & .image__3 {
+            top: 0%;
+            left: 60%;
+        }
+    }
+
     &__image {
-        width: 80%;
+        width: 60%;
+        position: absolute;
     }
 }

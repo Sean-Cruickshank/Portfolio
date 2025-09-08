@@ -74,7 +74,7 @@ data.forEach(category => {
     </div>
   `
 })
-const skills = document.querySelector('.skills')
+const skills = document.querySelector('.skills__section')
 if (skills) skills.innerHTML = skillsHTML
 
 // Populates the rows of skills icons
