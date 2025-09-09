@@ -3,8 +3,7 @@ type Project = {
   link: string,
   date: string,
   gallery: Image[],
-  tagsText: string[],
-  tagsClass: string[],
+  tags: Tag[],
   description: string[]
 }
 
@@ -13,7 +12,12 @@ type Image = {
   orientation: "landscape" | "portrait" | "square";
 }
 
-export const projectData: Project[] = [
+type Tag = {
+  title: string,
+  class: string
+}
+
+const projectData: Project[] = [
   {
     title: "coolspacefacts.com",
     link: "https://coolspacefacts.com/",
@@ -22,14 +26,11 @@ export const projectData: Project[] = [
       { url: "images/cool_space_facts/csp_standard.png", orientation: 'portrait'},
       { url: "images/cool_space_facts/csp_wide.png", orientation: 'landscape'},
     ],
-    tagsText: [
-      "HTML5", "CSS3", "JavaScript", "React"
-    ],
-    tagsClass: [
-      "devicon-html5-plain-wordmark",
-      "devicon-css3-plain-wordmark",
-      "devicon-javascript-plain",
-      "devicon-react-original"
+    tags: [
+      {title: 'HTML', class: 'devicon-html5-plain-wordmark'},
+      {title: 'CSS', class: 'devicon-css3-plain-wordmark'},
+      {title: 'JavaScript', class: 'devicon-javascript-plain'},
+      {title: 'React', class: 'devicon-react-original'},
     ],
     description: [
       "An interactive and educational space facts website. Each page contains a ranking of different space objects, from smallest to largest, based on a specific theme.",
@@ -45,14 +46,44 @@ export const projectData: Project[] = [
       {url: "images/tile_game/level_one.png", orientation: 'square'},
       {url: "images/tile_game/level_five.png", orientation: 'square'},
     ],
-    tagsText: [
-      "HTML5", "CSS3", "JavaScript", "React"
+    tags: [
+      {title: 'HTML', class: 'devicon-html5-plain-wordmark'},
+      {title: 'CSS', class: 'devicon-css3-plain-wordmark'},
+      {title: 'JavaScript', class: 'devicon-javascript-plain'},
+      {title: 'React', class: 'devicon-react-original'},
     ],
-    tagsClass: [
-      "devicon-html5-plain-wordmark",
-      "devicon-css3-plain-wordmark",
-      "devicon-javascript-plain",
-      "devicon-react-original"
+    description: [
+      "A small tile-based game created in JavaScript in under 24 hours. Collect keys to get as many points as you can in under 30 seconds. I didn't really make this one to showcase a skill I just thought it was fun."
+    ]
+  },
+  {
+    title: "Quiz Game",
+    link: "/",
+    date: "2025",
+    gallery: [
+
+    ],
+    tags: [
+      {title: 'SASS', class: 'devicon-sass-original'},
+      {title: 'TypeScript', class: 'devicon-typescript-plain'},
+      {title: 'React', class: 'devicon-react-original'},
+    ],
+    description: [
+      "A small tile-based game created in JavaScript in under 24 hours. Collect keys to get as many points as you can in under 30 seconds. I didn't really make this one to showcase a skill I just thought it was fun."
+    ]
+  },
+  {
+    title: "AI Memory Hole",
+    link: "/",
+    date: "2025",
+    gallery: [
+
+    ],
+    tags: [
+      {title: 'Tailwind', class: 'devicon-tailwindcss-original'},
+      {title: 'TypeScript', class: 'devicon-typescript-plain'},
+      {title: 'Next.JS', class: 'devicon-nextjs-original-wordmark'},
+      {title: 'Python', class: 'devicon-python-plain'},
     ],
     description: [
       "A small tile-based game created in JavaScript in under 24 hours. Collect keys to get as many points as you can in under 30 seconds. I didn't really make this one to showcase a skill I just thought it was fun."
@@ -68,11 +99,11 @@ projectData.forEach(project => {
   let paragraphs = ""
   let tagCount = 0
 
-  project.tagsClass.forEach(tag => {
-    const title = project.tagsText[tagCount++]
+  project.tags.forEach(tag => {
+    const title = project.tags[tagCount++].title
     projectListTags += `
       <i
-        class="${tag} projects__icon"
+        class="${tag.class} projects__icon"
         title=${title}
       ></i>
     `
@@ -100,28 +131,25 @@ projectData.forEach(project => {
     </div>
   `
 
-  let projectsGallery = `
-    <div class="projects__gallery">
-      ${createGallery(project.gallery)}
-    </div>
-  `
-
   projectListHTML += `
     <div class="projects__card">
-      ${flip ? `${projectsGallery} ${projectsInfo}` : `${projectsInfo} ${projectsGallery}`}
+      ${flip
+        ? `${createGallery(project.gallery, 'left')} ${projectsInfo}`
+        : `${projectsInfo} ${createGallery(project.gallery, 'right')}`
+      }
     </div>
   `
   flip = !flip
 })
 
-function createGallery(array: Image[]) {
+function createGallery(array: Image[], position: string) {
   let galleryHTML = ''
   let count = 1
   array.forEach(image => {
-    count <= 3 ? galleryHTML+= `<img class="projects__image image__${count} image__${image.orientation}" src=${image.url} />` : null
+    count <= 3 ? galleryHTML+= `<img class="projects__image image__${position}__${count} image__${image.orientation}" src=${image.url} />` : null
     count++
   })
-  return galleryHTML
+  return `<div class="projects__gallery">${galleryHTML}</div>`
 }
 
 const list = document.querySelector('.projects__list')

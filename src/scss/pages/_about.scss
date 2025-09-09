@@ -9,4 +9,16 @@
         font-size: 1.6rem;
         font-style: italic;
     }
+
+    &__intro {
+        font-weight: bold;
+        font-size: 1.6rem;
+        font-style: italic;
+        margin-bottom: 100px;
+    }
+
+    &__history {
+        width: 70%;
+        margin-inline: auto;
+    }
 }

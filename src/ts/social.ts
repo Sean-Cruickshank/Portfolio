@@ -11,7 +11,7 @@ function renderSocial() {
                 }, delay)
                 delay+= 500
             })
-        }, 500)
+        }, 2000)
         firstScroll = true
     }
 }
@@ -23,12 +23,10 @@ icon?.addEventListener('click', () => {
 })
 
 // Conditionally render scroll to top button if not at the top of the page
-// Render social icons on first scroll
 window.addEventListener('scroll', () => {
     const position = Math.floor(scrollY)
     if (icon) {
         if (position > 25) {
-            renderSocial()
             icon.classList.remove('hidden')
         } else {
             icon.classList.add('hidden')
@@ -36,3 +34,5 @@ window.addEventListener('scroll', () => {
 
     }
 })
+
+renderSocial()

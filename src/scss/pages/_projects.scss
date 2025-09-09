@@ -40,12 +40,21 @@
 
     &__gallery {
         position: relative;
-        & .image__1 {
+        & .image__left__1 {
+            top: 0%;
+            right: 0;
+        }
+
+        & .image__left__2 {
+            top: 40%;
+            right: 25%;
+        }
+        & .image__right__1 {
             top: 0%;
             left: 0;
         }
 
-        & .image__2 {
+        & .image__right__2 {
             top: 40%;
             left: 25%;
         }
@@ -66,5 +75,6 @@
     &__image {
         position: absolute;
         border-radius: 10px;
+        border: solid 1px var(--text);
     }
 }

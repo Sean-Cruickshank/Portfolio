@@ -104,7 +104,6 @@ window.addEventListener('scroll', () => {
 
 function renderSkills(category: string) {
   const iconArray = document.querySelectorAll(`${category} .skills__icon`)
-  console.log(iconArray)
   let delay = 0
   iconArray.forEach(icon => {
       setTimeout(() => {

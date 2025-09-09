@@ -1,5 +1,17 @@
+@font-face {
+    font-family: 'Agency FB Thin';
+    src: url(/src/fonts/AgencyFB-Bold.ttf) format('truetype');
+}
+
 html {
     color: var(--text);
+}
+
+h1, h2, h3, h4 {
+    font-family: 'Agency FB Thin', sans-serif;
+    text-transform: uppercase;
+    font-weight: 100;
+    letter-spacing: 5px;
 }
 
 h1 {
