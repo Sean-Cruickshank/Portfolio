@@ -1,6 +1,5 @@
 html {
     background: #030020;
-    // background: linear-gradient(#030020, #140033 100%);
     background: linear-gradient(130deg, #04002e 0% 5%, #030020 100%);
     background-attachment: fixed;
     min-height: 100vh;
@@ -28,8 +27,15 @@ main {
     width: 80%;
     padding-inline: 30px;
     margin-inline: auto;
-    margin-bottom: 200px;
     text-align: center;
+}
+
+footer {
+    display: flex;
+    flex-direction: column;
+    line-height: 200%;
+    margin-top: 300px;
+    margin-bottom: 10px;
 }
 
 .hidden {

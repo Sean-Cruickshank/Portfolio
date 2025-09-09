@@ -27,8 +27,15 @@ main {
   width: 80%;
   padding-inline: 30px;
   margin-inline: auto;
-  margin-bottom: 200px;
   text-align: center;
+}
+
+footer {
+  display: flex;
+  flex-direction: column;
+  line-height: 200%;
+  margin-top: 300px;
+  margin-bottom: 10px;
 }
 
 .hidden, .hidden__fade {
@@ -101,6 +108,7 @@ p {
   gap: 30px;
   display: grid;
   grid-template-columns: 1fr;
+  z-index: 99;
 }
 .social__icon {
   font-size: 3rem;
@@ -115,6 +123,7 @@ p {
   right: 15px;
   width: 3rem;
   aspect-ratio: 1;
+  z-index: 99;
 }
 .to-top__icon {
   font-size: 2rem;
@@ -133,6 +142,7 @@ p {
 .projects__card {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  gap: 30px;
   margin-bottom: 200px;
 }
 .projects__info {
@@ -165,20 +175,25 @@ p {
   position: relative;
 }
 .projects__gallery .image__1 {
-  top: 10%;
+  top: 0%;
   left: 0;
 }
 .projects__gallery .image__2 {
-  top: 50%;
-  left: 30%;
+  top: 40%;
+  left: 25%;
 }
-.projects__gallery .image__3 {
-  top: 0%;
-  left: 60%;
+.projects__gallery .image__landscape {
+  width: 100%;
+}
+.projects__gallery .image__portrait {
+  width: 60%;
+}
+.projects__gallery .image__square {
+  width: 80%;
 }
 .projects__image {
-  width: 60%;
   position: absolute;
+  border-radius: 10px;
 }
 
 .about p {

@@ -1,12 +1,26 @@
-export const projectData = [
+type Project = {
+  title: string,
+  link: string,
+  date: string,
+  gallery: Image[],
+  tagsText: string[],
+  tagsClass: string[],
+  description: string[]
+}
+
+type Image = {
+  url: string;
+  orientation: "landscape" | "portrait" | "square";
+}
+
+export const projectData: Project[] = [
   {
     title: "coolspacefacts.com",
     link: "https://coolspacefacts.com/",
     date: "2023",
     gallery: [
-      "images/cool_space_facts/csp_standard.png",
-      "images/cool_space_facts/csp_mobile.png",
-      "images/cool_space_facts/csp_wide.png",
+      { url: "images/cool_space_facts/csp_standard.png", orientation: 'portrait'},
+      { url: "images/cool_space_facts/csp_wide.png", orientation: 'landscape'},
     ],
     tagsText: [
       "HTML5", "CSS3", "JavaScript", "React"
@@ -28,9 +42,8 @@ export const projectData = [
     link: "/tilegame",
     date: "2024",
     gallery: [
-      "images/tile_game/level_one.png",
-      "images/tile_game/level_four.png",
-      "images/tile_game/level_five.png",
+      {url: "images/tile_game/level_one.png", orientation: 'square'},
+      {url: "images/tile_game/level_five.png", orientation: 'square'},
     ],
     tagsText: [
       "HTML5", "CSS3", "JavaScript", "React"
@@ -48,14 +61,15 @@ export const projectData = [
 ]
 
 let projectListHTML = ""
+let flip = false
 
 projectData.forEach(project => {
   let projectListTags = ""
   let paragraphs = ""
-  let count = 0
+  let tagCount = 0
 
   project.tagsClass.forEach(tag => {
-    const title = project.tagsText[count++]
+    const title = project.tagsText[tagCount++]
     projectListTags += `
       <i
         class="${tag} projects__icon"
@@ -70,40 +84,44 @@ projectData.forEach(project => {
     `
   })
 
-  projectListHTML += `
-    <div class="projects__card">
-
-      <div class="projects__info">
-        <div class="projects__title">
-          <h3>${project.title}</h3>
-          <a
-            title=${project.link}
-            target="_blank"
-            href=${project.link} class="projects__link fa-solid fa-link"
-          ></a>
-        </div>
-        <i class="paragraph projects__date">${project.date}</i>
-        <div class="projects__paragraphs">${paragraphs}</div>
-        <div class="projects__icons">${projectListTags}</div>
+  let projectsInfo = `
+    <div class="projects__info">
+      <div class="projects__title">
+        <h3>${project.title}</h3>
+        <a
+          title=${project.link}
+          target="_blank"
+          href=${project.link} class="projects__link fa-solid fa-link"
+        ></a>
       </div>
-      ${createGallery(project.gallery)}
-      
+      <i class="paragraph projects__date">${project.date}</i>
+      <div class="projects__paragraphs">${paragraphs}</div>
+      <div class="projects__icons">${projectListTags}</div>
     </div>
   `
+
+  let projectsGallery = `
+    <div class="projects__gallery">
+      ${createGallery(project.gallery)}
+    </div>
+  `
+
+  projectListHTML += `
+    <div class="projects__card">
+      ${flip ? `${projectsGallery} ${projectsInfo}` : `${projectsInfo} ${projectsGallery}`}
+    </div>
+  `
+  flip = !flip
 })
 
-function createGallery(array: string[]) {
+function createGallery(array: Image[]) {
   let galleryHTML = ''
   let count = 1
   array.forEach(image => {
-    count <= 3 ? galleryHTML+= `<img class="projects__image image__${count}" src=${image} />` : null
+    count <= 3 ? galleryHTML+= `<img class="projects__image image__${count} image__${image.orientation}" src=${image.url} />` : null
     count++
   })
-  return `
-    <div class="projects__gallery">
-    ${galleryHTML}
-    </div>
-  `
+  return galleryHTML
 }
 
 const list = document.querySelector('.projects__list')
