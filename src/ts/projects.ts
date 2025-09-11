@@ -19,6 +19,61 @@ type Tag = {
 
 const projectData: Project[] = [
   {
+    title: "AI Building Memory Project",
+    link: "/",
+    date: "2025",
+    gallery: [
+
+    ],
+    tags: [
+      {title: 'Tailwind', class: 'devicon-tailwindcss-original'},
+      {title: 'TypeScript', class: 'devicon-typescript-plain'},
+      {title: 'Next.JS', class: 'devicon-nextjs-original-wordmark'},
+      {title: 'Python', class: 'devicon-python-plain'},
+      {title: 'SQL', class: "devicon-azuresqldatabase-plain"},
+    ],
+    description: [
+      "An AI-powered chatbot and information retrieval system built for the construction sector",
+      "Created over the course of 3 months as part of an AI Accelerator program",
+      "Utilises LLMs, custom system prompts, and RAG embedding to reliably retrieve information from a database"
+    ]
+  },
+  {
+    title: "Country Quiz",
+    link: "/",
+    date: "2025",
+    gallery: [
+
+    ],
+    tags: [
+      {title: 'SASS', class: 'devicon-sass-original'},
+      {title: 'TypeScript', class: 'devicon-typescript-plain'},
+      {title: 'React', class: 'devicon-react-original'},
+    ],
+    description: [
+      "A small tile-based game created in JavaScript in under 24 hours. Collect keys to get as many points as you can in under 30 seconds. I didn't really make this one to showcase a skill I just thought it was fun."
+    ]
+  },
+  {
+    title: "Tile Game",
+    link: "/tilegame",
+    date: "2024",
+    gallery: [
+      {url: "images/tile_game/level_one.png", orientation: 'square'},
+      {url: "images/tile_game/level_five.png", orientation: 'square'},
+    ],
+    tags: [
+      {title: 'HTML', class: 'devicon-html5-plain-wordmark'},
+      {title: 'CSS', class: 'devicon-css3-plain-wordmark'},
+      {title: 'JavaScript', class: 'devicon-javascript-plain'},
+      {title: 'React', class: 'devicon-react-original'},
+    ],
+    description: [
+      "A small tile-based game created in JavaScript in under 24 hours. Collect keys to get as many points as you can in under 30 seconds",
+      "I didn't really make this one to showcase a skill I just thought it was fun"
+    ]
+  },
+  {
     title: "coolspacefacts.com",
     link: "https://coolspacefacts.com/",
     date: "2023",
@@ -37,57 +92,6 @@ const projectData: Project[] = [
       "This was one of my first attempts at creating a live website, and although it is pretty simple I learned a lot while making it.",
       "I also thought it was a cool domain name to own 😎"
     ],
-  },
-  {
-    title: "Tile Game",
-    link: "/tilegame",
-    date: "2024",
-    gallery: [
-      {url: "images/tile_game/level_one.png", orientation: 'square'},
-      {url: "images/tile_game/level_five.png", orientation: 'square'},
-    ],
-    tags: [
-      {title: 'HTML', class: 'devicon-html5-plain-wordmark'},
-      {title: 'CSS', class: 'devicon-css3-plain-wordmark'},
-      {title: 'JavaScript', class: 'devicon-javascript-plain'},
-      {title: 'React', class: 'devicon-react-original'},
-    ],
-    description: [
-      "A small tile-based game created in JavaScript in under 24 hours. Collect keys to get as many points as you can in under 30 seconds. I didn't really make this one to showcase a skill I just thought it was fun."
-    ]
-  },
-  {
-    title: "Quiz Game",
-    link: "/",
-    date: "2025",
-    gallery: [
-
-    ],
-    tags: [
-      {title: 'SASS', class: 'devicon-sass-original'},
-      {title: 'TypeScript', class: 'devicon-typescript-plain'},
-      {title: 'React', class: 'devicon-react-original'},
-    ],
-    description: [
-      "A small tile-based game created in JavaScript in under 24 hours. Collect keys to get as many points as you can in under 30 seconds. I didn't really make this one to showcase a skill I just thought it was fun."
-    ]
-  },
-  {
-    title: "AI Memory Hole",
-    link: "/",
-    date: "2025",
-    gallery: [
-
-    ],
-    tags: [
-      {title: 'Tailwind', class: 'devicon-tailwindcss-original'},
-      {title: 'TypeScript', class: 'devicon-typescript-plain'},
-      {title: 'Next.JS', class: 'devicon-nextjs-original-wordmark'},
-      {title: 'Python', class: 'devicon-python-plain'},
-    ],
-    description: [
-      "A small tile-based game created in JavaScript in under 24 hours. Collect keys to get as many points as you can in under 30 seconds. I didn't really make this one to showcase a skill I just thought it was fun."
-    ]
   },
 ]
 

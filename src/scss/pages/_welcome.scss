@@ -8,12 +8,16 @@
 
     &__headers {
         text-align: center;
-        line-height: 75%;
         transition: 3s;
 
 
         & h1 {
             letter-spacing: 10px;
+            background: -webkit-linear-gradient(var(--gradientA), var(--gradientB) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0;
         }
 
         & h2 {

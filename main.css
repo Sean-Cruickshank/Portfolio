@@ -79,6 +79,8 @@ p {
 
 :root {
   --text: #c2c2c2;
+  --gradientA: var(--text);
+  --gradientB: rgb(158, 188, 255);
 }
 
 .welcome {
@@ -91,11 +93,15 @@ p {
 }
 .welcome__headers {
   text-align: center;
-  line-height: 75%;
   transition: 3s;
 }
 .welcome__headers h1 {
   letter-spacing: 10px;
+  background: -webkit-linear-gradient(var(--gradientA), var(--gradientB) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 0;
 }
 .welcome__headers h2 {
   font-weight: 100;
@@ -151,11 +157,13 @@ p {
 
 .icon {
   color: var(--text);
+  opacity: 0.5;
   transition: 0.3s;
   cursor: pointer;
 }
 .icon:hover {
   transform: scale(0.9);
+  opacity: 0.8;
 }
 
 .projects__card {
@@ -185,10 +193,13 @@ p {
 }
 .projects__icons {
   margin-top: 40px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 .projects__icon {
   font-size: 3rem;
-  padding: 0 30px;
+  margin: 0 15px;
 }
 .projects__gallery {
   position: relative;

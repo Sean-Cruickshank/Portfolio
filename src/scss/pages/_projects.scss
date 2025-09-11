@@ -31,11 +31,14 @@
 
     &__icons {
         margin-top: 40px;
+        width: 100%;
+        display: flex;
+        justify-content: center;
     }
 
     &__icon {
         font-size: 3rem;
-        padding: 0 30px;
+        margin: 0 15px;
     }
 
     &__gallery {
