@@ -75,6 +75,8 @@ h3 {
 
 p {
   font-size: 1.25rem;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
+  font-weight: 100;
 }
 
 :root {
@@ -135,7 +137,7 @@ p {
   grid-template-columns: 1fr;
   z-index: 99;
 }
-.social__icon {
+.social a {
   font-size: 3rem;
 }
 
@@ -149,21 +151,18 @@ p {
   width: 3rem;
   aspect-ratio: 1;
   z-index: 99;
-}
-.to-top__icon {
   font-size: 2rem;
-  display: none;
 }
 
-.icon {
+.social a, .to-top i {
   color: var(--text);
-  opacity: 0.5;
+  opacity: 0.8;
   transition: 0.3s;
   cursor: pointer;
 }
-.icon:hover {
+.social a:hover, .to-top i:hover {
   transform: scale(0.9);
-  opacity: 0.8;
+  opacity: 1;
 }
 
 .projects__card {
@@ -236,20 +235,42 @@ p {
 }
 
 .about p {
-  font-size: 1.4rem;
   line-height: 200%;
 }
 .about b {
-  font-size: 1.6rem;
+  font-size: 1.4rem;
   font-style: italic;
+  font-weight: 900;
 }
 .about__intro {
-  font-weight: bold;
-  font-size: 1.6rem;
+  font-size: 1.4rem;
   font-style: italic;
   margin-bottom: 100px;
 }
 .about__history {
   width: 70%;
   margin-inline: auto;
+}
+
+.contact__icons {
+  display: flex;
+  justify-content: center;
+  margin-top: 100px;
+}
+.contact__icons a {
+  font-size: 5rem;
+  color: var(--text);
+  opacity: 0.8;
+  transition: 0.3s;
+  cursor: pointer;
+  margin: 0 50px;
+}
+.contact__icons a:hover {
+  transform: scale(0.9);
+  opacity: 1;
+}
+
+footer p {
+  line-height: 100%;
+  font-size: 0.8rem;
 }/*# sourceMappingURL=main.css.map */

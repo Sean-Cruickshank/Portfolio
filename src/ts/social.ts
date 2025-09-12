@@ -2,7 +2,7 @@
 let firstScroll = false
 function renderSocial() {
     if (!firstScroll) {
-        const iconArray = document.querySelectorAll('.social__icon')
+        const iconArray = document.querySelectorAll('.social a')
         let delay = 500
         setTimeout(() => {
             iconArray.forEach(icon => {
@@ -17,7 +17,7 @@ function renderSocial() {
 }
 
 // Scroll to top button functionality
-const icon = document.querySelector('.to-top__icon')
+const icon = document.querySelector('.to-top i')
 icon?.addEventListener('click', () => {
     window.scrollTo({top: 0, left: 0, behavior: 'smooth'})
 })

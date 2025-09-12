@@ -1,0 +1,21 @@
+.contact {
+    &__icons {
+        display: flex;
+        justify-content: center;
+        margin-top: 100px;
+
+        & a {
+            font-size: 5rem;
+            color: var(--text);
+            opacity: 0.8;
+            transition: 0.3s;
+            cursor: pointer;
+            margin: 0 50px;
+
+            &:hover {
+                transform: scale(0.9);
+                opacity: 1;
+            }
+        }
+    }
+}

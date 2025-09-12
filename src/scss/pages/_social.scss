@@ -7,7 +7,7 @@
     grid-template-columns: 1fr;
     z-index: 99;
 
-    &__icon {
+    & a {
         font-size: 3rem;
     }
 }
@@ -22,21 +22,17 @@
     width: 3rem;
     aspect-ratio: 1;
     z-index: 99;
-
-    &__icon {
-        font-size: 2rem;
-        display: none;
-    }
+    font-size: 2rem;
 }
 
-.icon {
+.social a, .to-top i {
     color: var(--text);
-    opacity: 0.5;
+    opacity: 0.8;
     transition: 0.3s;
     cursor: pointer;
 
     &:hover {
         transform: scale(0.9);
-        opacity: 0.8;
+        opacity: 1;
     }
 }
