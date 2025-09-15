@@ -56,11 +56,12 @@ const projectData: Project[] = [
   },
   {
     title: "Tile Game",
-    link: "/tilegame",
+    link: "/tilegame/index.html", // for localhost
+    // link: "/tilegame", // for deployment
     date: "2024",
     gallery: [
-      {url: "images/tile_game/level_one.png", orientation: 'square'},
-      {url: "images/tile_game/level_five.png", orientation: 'square'},
+      {url: "images/gallery/level_one.png", orientation: 'square'},
+      {url: "images/gallery/level_five.png", orientation: 'square'},
     ],
     tags: [
       {title: 'HTML', class: 'devicon-html5-plain-wordmark'},
@@ -78,8 +79,8 @@ const projectData: Project[] = [
     link: "https://coolspacefacts.com/",
     date: "2023",
     gallery: [
-      { url: "images/cool_space_facts/csp_standard.png", orientation: 'portrait'},
-      { url: "images/cool_space_facts/csp_wide.png", orientation: 'landscape'},
+      { url: "images/gallery/csp_standard.png", orientation: 'portrait'},
+      { url: "images/gallery/csp_wide.png", orientation: 'landscape'},
     ],
     tags: [
       {title: 'HTML', class: 'devicon-html5-plain-wordmark'},
