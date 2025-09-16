@@ -43,7 +43,7 @@ function setValues() {
   }
 }
 
-function plateCreator(icon, x, y) {
+function plateCreator(icon) {
   if (icon === 'floor' || icon === 'wall') {
     if (score < 5) {
       return `<div class="plate ${icon}-one"></div>`
@@ -57,28 +57,27 @@ function plateCreator(icon, x, y) {
       return `<div class="plate ${icon}-five"></div>`
     }
   } else {
-    return `<div class="plate ${icon}"></div>`
+    return `<div class="plate ${icon}" style="background-color: ${selectedColour};'"></div>`
   }
   
 }
 
 const gameElement = document.querySelector('.js-game');
-
 const selectElement = document.querySelector('.js-colour-select');
-
-const playerColour = 'orange'
+const colourElement = document.querySelector('.js-colour-input')
 
 function renderGrid() {
   let gameElementHTML = '';
   plateArray.forEach((plate) => {
     if (plate.grey) {
-      gameElementHTML += plateCreator('wall', plate.x, plate.y)
+      gameElementHTML += plateCreator('wall')
     } else if (plate.x === playerPos.x && plate.y === playerPos.y) {
-      gameElementHTML += plateCreator(`player-icon player-icon-${selectElement.value}`, plate.x, plate.y)
+      // gameElementHTML += plateCreator(`player-icon player-icon-${selectElement.value}`, plate.x, plate.y)
+      gameElementHTML += plateCreator(`player-icon`)
     } else if (plate.x === goalPos.x && plate.y === goalPos.y) {
-      gameElementHTML += plateCreator('key', plate.x, plate.y)
+      gameElementHTML += plateCreator('key')
     } else {
-      gameElementHTML += plateCreator('floor', plate.x, plate.y)
+      gameElementHTML += plateCreator('floor')
     }
   })
   gameElement.innerHTML = gameElementHTML;
@@ -191,6 +190,11 @@ function closeEndMessage() {
 function resetHighScore() {
   highScore = 0;
   localStorage.setItem('highscore', highScore)
+  const match = colourArray.find(colour => colour.name.toLowerCase() === selectedColour.toLowerCase())
+  console.log(match)
+  if (match.locked) {
+    changeColour('blue')
+  }
   renderScores()
   setColourPicker()
 }
@@ -246,20 +250,37 @@ function checkPos(move) {
 }
 
 const colourArray = [
-  {name: 'Blue', required: 0},
-  {name: 'Red', required: 0},
-  {name: 'Yellow', required: 0},
-  {name: 'Green', required: 0},
-  {name: 'Teal', required: 10},
-  {name: 'Orange', required: 15},
-  {name: 'Purple', required: 20},
+  {name: 'Blue', locked: false, required: 0},
+  {name: 'Red', locked: false, required: 0},
+  {name: 'Yellow', locked: false, required: 0},
+  {name: 'Green', locked: false, required: 0},
+  {name: 'Teal', locked: true, required: 10},
+  {name: 'Orange', locked: true, required: 15},
+  {name: 'Purple', locked: true, required: 20},
 ]
+
+function changeColour(colour) {
+  selectedColour = colour
+  localStorage.setItem('colour', colour)
+}
+
+selectElement.addEventListener('click', () => {
+  changeColour(selectElement.value)
+})
+
+colourElement.addEventListener('click', () => {
+  console.log(colourElement.value)
+  changeColour(colourElement.value)
+})
+
+setInterval(() => {
+  changeColour(colourElement.value)
+,100})
 
 function setColourPicker() {
   let optionHTML = ''
   colourArray.forEach(option => {
     const name = option.name.toLowerCase()
-    console.log(selectedColour)
     optionHTML+= `
       <option
         value="${name}"

@@ -62,10 +62,10 @@ button:hover {
 }
 
 .player-icon {
-  background-image: url(/images/tilegame/player-blue.png);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
+  background-image: url(/images/tilegame/player-template.png);
 }
 
 .player-icon-blue {
