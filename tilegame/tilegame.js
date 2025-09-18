@@ -4,7 +4,8 @@ let playerPos = randomPos();
 let goalPos = randomPos();
 let score = 0
 let highScore = localStorage.getItem('highscore') | 0;
-let selectedColour = localStorage.getItem('colour') || 'yellow'
+let selectedColour = localStorage.getItem('colour') || 'blue'
+let selectedArrow = localStorage.getItem('arrow') || 'black'
 
 function randomPos() {
   let x = Math.ceil(Math.random() * 12);
@@ -65,6 +66,10 @@ function plateCreator(icon) {
 const gameElement = document.querySelector('.js-game');
 const selectElement = document.querySelector('.js-colour-select');
 const colourElement = document.querySelector('.js-colour-input')
+const arrowElement = document.querySelector('.js-arrow-select')
+
+// selectElement.value = selectedColour
+// arrowElement.value = selectedArrow
 
 function renderGrid() {
   let gameElementHTML = '';
@@ -73,7 +78,7 @@ function renderGrid() {
       gameElementHTML += plateCreator('wall')
     } else if (plate.x === playerPos.x && plate.y === playerPos.y) {
       // gameElementHTML += plateCreator(`player-icon player-icon-${selectElement.value}`, plate.x, plate.y)
-      gameElementHTML += plateCreator(`player-icon`)
+      gameElementHTML += plateCreator(`player-icon player-icon-${arrowElement.value}`)
     } else if (plate.x === goalPos.x && plate.y === goalPos.y) {
       gameElementHTML += plateCreator('key')
     } else {
@@ -83,7 +88,7 @@ function renderGrid() {
   gameElement.innerHTML = gameElementHTML;
   renderScores()
   if (playerPos.x === goalPos.x && playerPos.y === goalPos.y) {
-    score+= 1;
+    score+= 5;
     if (score > highScore) {
       highScore = score;
       localStorage.setItem('highscore', highScore)
@@ -190,10 +195,10 @@ function closeEndMessage() {
 function resetHighScore() {
   highScore = 0;
   localStorage.setItem('highscore', highScore)
-  const match = colourArray.find(colour => colour.name.toLowerCase() === selectedColour.toLowerCase())
-  console.log(match)
+  const match = colourArray.find(colour => colour.hex === selectedColour)
   if (match.locked) {
-    changeColour('blue')
+    selectElement.value = 'blue'
+    changeColour('#3F48CC')
   }
   renderScores()
   setColourPicker()
@@ -250,42 +255,53 @@ function checkPos(move) {
 }
 
 const colourArray = [
-  {name: 'Blue', locked: false, required: 0},
-  {name: 'Red', locked: false, required: 0},
-  {name: 'Yellow', locked: false, required: 0},
-  {name: 'Green', locked: false, required: 0},
-  {name: 'Teal', locked: true, required: 10},
-  {name: 'Orange', locked: true, required: 15},
-  {name: 'Purple', locked: true, required: 20},
+  {name: 'Blue', hex: '#3F48CC', locked: false, required: 0},
+  {name: 'Red', hex: '#ED1C24', locked: false, required: 0},
+  {name: 'Yellow', hex: '#FFF200', locked: false, required: 0},
+  {name: 'Green', hex: '#22B14C', locked: false, required: 0},
+  {name: 'Teal', hex:'#21A7B1', locked: true, required: 10},
+  {name: 'Orange', hex: '#FF7F27', locked: true, required: 15},
+  {name: 'Custom', hex: '#FFFFFF', locked: true, required: 20},
 ]
+let isCustomSelected = false
+
+function customCheck() {
+  const match = colourArray.find(colour => colour.hex === selectedColour)
+  isCustomSelected = !match
+  console.log(isCustomSelected)
+}
 
 function changeColour(colour) {
   selectedColour = colour
   localStorage.setItem('colour', colour)
 }
 
-selectElement.addEventListener('click', () => {
-  changeColour(selectElement.value)
+function changeArrow(colour) {
+  selectedArrow = colour
+  localStorage.setItem('arrow', colour)
+}
+
+selectElement.addEventListener('input', () => {
+  // console.log(selectElement.value)
+  selectElement.value === '#FFFFFF' ? colourElement.click() : changeColour(selectElement.value)
 })
 
-colourElement.addEventListener('click', () => {
-  console.log(colourElement.value)
+colourElement.addEventListener('input', () => {
   changeColour(colourElement.value)
 })
-
-setInterval(() => {
-  changeColour(colourElement.value)
-,100})
+console.log(selectElement)
 
 function setColourPicker() {
   let optionHTML = ''
+  customCheck()
   colourArray.forEach(option => {
-    const name = option.name.toLowerCase()
+    console.log(option.hex, selectedColour, selectElement.value)
     optionHTML+= `
       <option
-        value="${name}"
-        ${name === selectedColour && 'selected="true"'}
-        ${highScore < option.required && 'disabled="true"'}
+        value="${option.hex}"
+        title="${option.name}"
+        ${option.hex === selectedColour || option.hex === '#FFFFFF' & isCustomSelected ? 'selected="true"' : ''}
+        ${highScore < option.required ? 'disabled="true"' : ''}
       >${highScore < option.required ? `${option.name} (required score: ${option.required})` : option.name}</option>
     `
   })
@@ -294,23 +310,6 @@ function setColourPicker() {
       ${optionHTML}
     </select>
   `
-//   selectElement.innerHTML = `
-//   <select class="colour-select js-colour-select" name="colour" id="colour-select">
-//     <option value="blue">Blue</option>
-//     <option selected value="red">Red</option>
-//     <option value="yellow">Yellow</option>
-//     <option value="green">Green</option>
-//     ${highScore >= 10
-//       ? `<option value="teal">Teal</option>`
-//       : `<option disabled value="teal">Teal (required score: 10)</option>`}
-//     ${highScore >= 15
-//       ? `<option value="orange">Orange</option>`
-//       : `<option disabled value="orange">Orange (required score: 15)</option>`}
-//     ${highScore >= 20
-//       ? `<option value="purple">Purple</option>`
-//       : `<option disabled value="purple">Purple (required score: 20)</option>`}
-//   </select>
-// `
 }
 
 setColourPicker()
