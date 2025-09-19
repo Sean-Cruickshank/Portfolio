@@ -33,10 +33,6 @@ button:hover {
   cursor: default;
 }
 
-.main {
-  background-color: red;
-}
-
 .grid {
   display: flex;
   gap: 10px;
@@ -59,6 +55,12 @@ button:hover {
   aspect-ratio: 1;
   padding: 0;
   margin: 0;
+}
+
+.customiser {
+  width: min(50px, 25%);
+  aspect-ratio: 1;
+  margin: 10px auto;
 }
 
 .player-icon {

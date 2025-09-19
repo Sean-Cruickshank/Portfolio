@@ -5,7 +5,7 @@ let goalPos = randomPos();
 let score = 0
 let highScore = localStorage.getItem('highscore') | 0;
 let selectedColour = localStorage.getItem('colour') || 'blue'
-let selectedArrow = localStorage.getItem('arrow') || 'black'
+let customColour = localStorage.getItem('custom-colour') || 'white'
 
 function randomPos() {
   let x = Math.ceil(Math.random() * 12);
@@ -58,18 +58,26 @@ function plateCreator(icon) {
       return `<div class="plate ${icon}-five"></div>`
     }
   } else {
-    return `<div class="plate ${icon}" style="background-color: ${selectedColour};'"></div>`
+    return `<div class="plate ${icon}" style="background-color: ${selectedColour};"></div>`
   }
-  
 }
 
 const gameElement = document.querySelector('.js-game');
 const selectElement = document.querySelector('.js-colour-select');
 const colourElement = document.querySelector('.js-colour-input')
 const arrowElement = document.querySelector('.js-arrow-select')
+const customiserElement = document.querySelector('.js-customiser')
 
-// selectElement.value = selectedColour
-// arrowElement.value = selectedArrow
+function customiserEditor() {
+  customiserElement.innerHTML = `
+    <div
+      class="player-icon player-icon-${arrowElement.value}"
+      style="background-color: ${selectedColour}; height: 100%;"
+    ></div>
+  `
+}
+
+customiserEditor()
 
 function renderGrid() {
   let gameElementHTML = '';
@@ -268,34 +276,37 @@ let isCustomSelected = false
 function customCheck() {
   const match = colourArray.find(colour => colour.hex === selectedColour)
   isCustomSelected = !match
-  console.log(isCustomSelected)
 }
 
 function changeColour(colour) {
   selectedColour = colour
   localStorage.setItem('colour', colour)
-}
-
-function changeArrow(colour) {
-  selectedArrow = colour
-  localStorage.setItem('arrow', colour)
+  customiserEditor()
 }
 
 selectElement.addEventListener('input', () => {
-  // console.log(selectElement.value)
-  selectElement.value === '#FFFFFF' ? colourElement.click() : changeColour(selectElement.value)
+  if (selectElement.value === '#FFFFFF') {
+    changeColour(customColour)
+    colourElement.click()
+  } else {
+    changeColour(selectElement.value)
+  }
 })
 
 colourElement.addEventListener('input', () => {
   changeColour(colourElement.value)
+  customColour = colourElement.value
+  localStorage.setItem('custom-colour', customColour)
 })
-console.log(selectElement)
+
+arrowElement.addEventListener('input', () => {
+  customiserEditor()
+})
 
 function setColourPicker() {
   let optionHTML = ''
   customCheck()
   colourArray.forEach(option => {
-    console.log(option.hex, selectedColour, selectElement.value)
     optionHTML+= `
       <option
         value="${option.hex}"
