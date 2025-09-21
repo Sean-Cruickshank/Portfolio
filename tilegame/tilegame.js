@@ -66,18 +66,32 @@ const gameElement = document.querySelector('.js-game');
 const selectElement = document.querySelector('.js-colour-select');
 const colourElement = document.querySelector('.js-colour-input')
 const arrowElement = document.querySelector('.js-arrow-select')
-const customiserElement = document.querySelector('.js-customiser')
 
-function customiserEditor() {
-  customiserElement.innerHTML = `
+const customiserButton = document.querySelector('.js-customiser-button')
+const customiserPanel = document.querySelector('.js-customiser-panel')
+const customiserClose = document.querySelector('.js-customiser-close')
+
+function renderCustomiserButton() {
+  customiserButton.innerHTML = `
     <div
       class="player-icon player-icon-${arrowElement.value}"
       style="background-color: ${selectedColour}; height: 100%;"
+      title="Customisation Settings"
     ></div>
   `
 }
 
-customiserEditor()
+renderCustomiserButton()
+
+customiserButton.addEventListener('click', () => {
+  customiserPanel.classList.remove('hidden')
+  toggleButtons('disable', ['highscore', 'start'])
+})
+
+customiserClose.addEventListener('click', () => {
+  customiserPanel.classList.add('hidden')
+  toggleButtons('enable', ['highscore', 'start'])
+})
 
 function renderGrid() {
   let gameElementHTML = '';
@@ -125,6 +139,34 @@ const resetHighScoreButton = document.querySelector(".reset-score-button");
 const startGameButton = document.querySelector('.js-start-game-button');
 const stopGameButton = document.querySelector('.js-stop-game-button');
 
+function toggleButtons(status, list) {
+  if (status === 'enable') {
+    if (list.includes('start')) {
+      startGameButton.disabled = false
+      startGameButton.classList.remove('button-disabled')
+    }
+    if (list.includes('highscore')) {
+      resetHighScoreButton.disabled = false
+      resetHighScoreButton.classList.remove('button-disabled')
+    }
+    if (list.includes('customiser')) {
+      customiserButton.disabled = false
+    }
+  } else if (status === 'disable') {
+    if (list.includes('start')) {
+      startGameButton.disabled = true
+      startGameButton.classList.add('button-disabled')
+    }
+    if (list.includes('highscore')) {
+      resetHighScoreButton.disabled = true
+      resetHighScoreButton.classList.add('button-disabled')
+    }
+    if (list.includes('customiser')) {
+      customiserButton.disabled = true
+    }
+  }
+}
+
 function playGame() {
   const tipElement = document.querySelector('.js-tip');
   tipElement.classList.remove('hidden');
@@ -139,16 +181,10 @@ function playGame() {
       const timerElement = document.querySelector('.js-timer');
       timerElement.innerHTML = `${(timer / 10).toFixed(1)}`
       endMessageElement.classList.add('hidden')
-      selectElement.disabled = true;
-      selectElement.classList.add('button-disabled')
-      resetHighScoreButton.disabled = true
-      resetHighScoreButton.classList.add('button-disabled')
+      toggleButtons('disable', ['highscore', 'customiser'])
     } else {
       setColourPicker()
-      selectElement.disabled = false;
-      selectElement.classList.remove('button-disabled')
-      resetHighScoreButton.disabled = false
-      resetHighScoreButton.classList.remove('button-disabled')
+      toggleButtons('enable', ['highscore', 'customiser'])
       startGameButton.classList.remove('hidden');
       stopGameButton.classList.add('hidden');
       endMessageElement.classList.remove('hidden')
@@ -176,23 +212,23 @@ function generateEndMessage() {
     endMessage = 'Better luck next time!'
   }
 
-endMessageElement.innerHTML =
-  `
-    <div>
-      <h2>Game over!</h2>
-      <p class="end-message-message">${endMessage}</p>
-      <p
-        class="end-message-score"
-      >Your score: ${score}</p>
-      <p
-        class="end-message-score"
-      >High score: ${highScore}</p>
-      <button
-        class="tg-button"
-        onclick="document.querySelector('.js-end-message').classList.add('hidden')"
-      >Close</button>
-    </div>
-  `
+  endMessageElement.innerHTML =
+    `
+      <div>
+        <h2>Game over!</h2>
+        <p class="end-message-message">${endMessage}</p>
+        <p
+          class="end-message-score"
+        >Your score: ${score}</p>
+        <p
+          class="end-message-score"
+        >High score: ${highScore}</p>
+        <button
+          class="tg-button"
+          onclick="document.querySelector('.js-end-message').classList.add('hidden')"
+        >Close</button>
+      </div>
+    `
 }
 
 
@@ -281,7 +317,7 @@ function customCheck() {
 function changeColour(colour) {
   selectedColour = colour
   localStorage.setItem('colour', colour)
-  customiserEditor()
+  renderCustomiserButton()
 }
 
 selectElement.addEventListener('input', () => {
@@ -300,7 +336,7 @@ colourElement.addEventListener('input', () => {
 })
 
 arrowElement.addEventListener('input', () => {
-  customiserEditor()
+  renderCustomiserButton()
 })
 
 function setColourPicker() {
