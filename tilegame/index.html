@@ -16,41 +16,49 @@
     <div class="control-panel">
       <button class="reset-score-button">Reset Highscore</button>
       <button class="customiser-button js-customiser-button"></button>
-      <p class="js-score score">0</p>
+      <div class="score-container">
+        <p class="js-score score">0</p>
+        <p class="boost score-boost"></p>
+      </div>
       <p class="js-high-score high-score">0</p>
       
       <p class="js-tip tip hidden">Reset the board at any time by hitting the 'Enter' key!</p>
-      <p class="js-timer timer">30.0</p>
+      <div class="timer-container">
+        <p class="js-timer timer">30.0</p>
+        <p class="boost timer-boost"></p>
+      </div>
       <button class="js-start-game-button start-game-button">Start</button>
       <button class="js-stop-game-button stop-game-button hidden">Stop</button>
     </div>
-  </div>
 
-  <div class="js-end-message end-message hidden"></div>
+    <div class="js-end-message end-message hidden"></div>
 
-  <div class="js-customiser-panel customiser-panel hidden">
-    <h2>Customisation</h2>
-    <div class="customiser-grid">
-      <p>Colour:</p>
-      <select class="colour-select js-colour-select" name="colour" id="colour-select">
-        <option title="Blue" value="blue">Blue</option>
-        <option title="Red" value="red">Red</option>
-        <option title="Yellow" value="yellow">Yellow</option>
-        <option title="Green" value="green">Green</option>
-        <option title="Teal" value="teal">Teal</option>
-        <option title="Orange" value="orange">Orange</option>
-        <option title="Custom" value="custom">Custom</option>
-      </select>
+    <div class="js-customiser-panel customiser-panel hidden">
+      <h2>Customisation Settings</h2>
+      <div class="customiser-option">
+        <p>Colour:</p>
+        <select class="colour-select js-colour-select" name="colour" id="colour-select">
+          <option title="Blue" value="blue">Blue</option>
+          <option title="Red" value="red">Red</option>
+          <option title="Yellow" value="yellow">Yellow</option>
+          <option title="Green" value="green">Green</option>
+          <option title="Teal" value="teal">Teal</option>
+          <option title="Orange" value="orange">Orange</option>
+          <option title="Custom" value="custom">Custom</option>
+        </select>
+      </div>
 
-      <p>Frame:</p>
-      <select class="arrow-select js-arrow-select" name="arrow" id="arrow-select">
-        <option title="Black" value="black">Black</option>
-        <option title="White" value="white">White</option>
-        <option title="Gold" value="gold">Gold</option>
-      </select>
-    </div>
+      <div class="customiser-option">
+        <p>Frame:</p>
+        <select class="arrow-select js-arrow-select" name="arrow" id="arrow-select">
+          <option title="Black" value="black">Black</option>
+          <option title="White" value="white">White</option>
+          <option title="Gold" value="gold">Gold</option>
+        </select>
+      </div>
       <button class="js-customiser-close customiser-close">Close</button>
       <input class="colour-input js-colour-input" type="color" />
+    </div>
   </div>
   
   <script type="module" src="tilegame.js"></script>

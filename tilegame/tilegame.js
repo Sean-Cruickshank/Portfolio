@@ -2,10 +2,31 @@ let plateArray = [];
 let grid = {x: 1, y: 1}
 let playerPos = randomPos();
 let goalPos = randomPos();
+let clockPos = randomPos();
 let score = 0
 let highScore = localStorage.getItem('highscore') | 0;
 let selectedColour = localStorage.getItem('colour') || 'blue'
 let customColour = localStorage.getItem('custom-colour') || 'white'
+
+let clockSpawn = rollOdds(100);
+let clockTypes = [2, 3, 5]
+let clockType = clockTypes[Math.floor(Math.random() * clockTypes.length)]
+let clockActive = true
+
+function rollOdds(num) {
+  const ran = ((Math.random().toFixed(2)) * 100)
+  return ran <= num
+}
+
+function boost(val, element) {
+  const boost = document.querySelector(element)
+  boost.innerHTML = `<p>+${val}</p>`
+  boost.classList.add('boost-active')
+  setTimeout(() => {
+    boost.classList.remove('boost-active')
+    boost.innerHTML = `<p></p>`
+  }, 500)
+}
 
 function randomPos() {
   let x = Math.ceil(Math.random() * 12);
@@ -18,15 +39,20 @@ function setValues() {
   grid.y = 1;
   playerPos = randomPos();
   goalPos = randomPos();
+  clockPos = randomPos();
+  clockSpawn = rollOdds(100)
+  clockType = clockTypes[Math.floor(Math.random() * clockTypes.length)]
+  clockActive = true
   plateArray = [];
 
   for (let i = 0; i < 144; i++) {
-    const ranNum = (Math.random().toFixed(2)) * 100;
     let isGrey = false;
-    if (ranNum <= 20) {
+    if (rollOdds(20)) {
       if (grid.x === playerPos.x && grid.y === playerPos.y) {
         isGrey = false;
       } else if (grid.x === goalPos.x && grid.y === goalPos.y) {
+        isGrey = false;
+      } else if (grid.x === clockPos.x && grid.y === clockPos.y) {
         isGrey = false;
       } else {
         isGrey = true;
@@ -45,21 +71,15 @@ function setValues() {
 }
 
 function plateCreator(icon) {
+  const level = Math.min(Math.floor(score / 5) + 1, 5)
   if (icon === 'floor' || icon === 'wall') {
-    if (score < 5) {
-      return `<div class="plate ${icon}-one"></div>`
-    } else if (score >= 5 && score < 10) {
-      return `<div class="plate ${icon}-two"></div>`
-    } else if (score >= 10 && score < 15) {
-      return `<div class="plate ${icon}-three"></div>`
-    } else if (score >= 15 && score < 20) {
-      return `<div class="plate ${icon}-four"></div>`
-    } else if (score >= 20) {
-      return `<div class="plate ${icon}-five"></div>`
-    }
-  } else {
-    return `<div class="plate ${icon}" style="background-color: ${selectedColour};"></div>`
+    return `<div class="plate ${icon}-${level}"></div>`
   }
+  if (icon === 'player') {
+    return `<div class="plate player-icon player-icon-${arrowElement.value}" style="background-color: ${selectedColour};"></div>`
+  }
+  
+  return `<div class="plate ${icon}"></div>`
 }
 
 const gameElement = document.querySelector('.js-game');
@@ -99,10 +119,11 @@ function renderGrid() {
     if (plate.grey) {
       gameElementHTML += plateCreator('wall')
     } else if (plate.x === playerPos.x && plate.y === playerPos.y) {
-      // gameElementHTML += plateCreator(`player-icon player-icon-${selectElement.value}`, plate.x, plate.y)
-      gameElementHTML += plateCreator(`player-icon player-icon-${arrowElement.value}`)
+      gameElementHTML += plateCreator('player')
     } else if (plate.x === goalPos.x && plate.y === goalPos.y) {
       gameElementHTML += plateCreator('key')
+    } else if ((plate.x === clockPos.x && plate.y === clockPos.y) && clockSpawn && clockActive) {
+      gameElementHTML += plateCreator(`clock-${clockType}`)
     } else {
       gameElementHTML += plateCreator('floor')
     }
@@ -110,13 +131,16 @@ function renderGrid() {
   gameElement.innerHTML = gameElementHTML;
   renderScores()
   if (playerPos.x === goalPos.x && playerPos.y === goalPos.y) {
-    score+= 5;
-    if (score > highScore) {
-      highScore = score;
-      localStorage.setItem('highscore', highScore)
-    }
+    score+= 1;
+    boost(1, '.score-boost')
     setValues()
     renderGrid()
+  }
+
+  if (playerPos.x === clockPos.x && playerPos.y === clockPos.y && clockActive) {
+    timer += (clockType * 10)
+    clockActive = false
+    boost(clockType, '.timer-boost')
   }
 }
 
@@ -183,6 +207,11 @@ function playGame() {
       endMessageElement.classList.add('hidden')
       toggleButtons('disable', ['highscore', 'customiser'])
     } else {
+      if (score > highScore) {
+        highScore = score;
+        localStorage.setItem('highscore', highScore)
+        renderScores()
+      }
       setColourPicker()
       toggleButtons('enable', ['highscore', 'customiser'])
       startGameButton.classList.remove('hidden');
