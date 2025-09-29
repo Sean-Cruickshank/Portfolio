@@ -1,6 +1,7 @@
 html {
   background: linear-gradient(130deg, #04002e 0% 5%, #030020 100%);
   min-height: 100vh;
+  max-height: 50%;
 }
 
 body {
@@ -9,6 +10,7 @@ body {
   font-size: 1rem;
   line-height: 1.1;
   color: white;
+  max-height: 50%;
 }
 
 button {
@@ -38,18 +40,15 @@ button:hover {
   display: flex;
   gap: 10px;
   justify-content: center;
-}
-
-.title {
-  background-color: black;
-  margin-inline: auto;
+  max-height: 100%;
 }
 
 .game {
   display: grid;
-  grid-template-columns: repeat(12, min(50px, 8.33%));
+  grid-template-columns: repeat(12, 8.33%);
   gap: 0px;
-  width: min(75%, 600px);
+  width: min(min(95vh, 75%), 600px);
+  aspect-ratio: 1;
 }
 
 .plate {
@@ -101,7 +100,7 @@ button:hover {
 }
 
 .wall-1 {
-  background: radial-gradient(green, rgb(0, 77, 0))
+  background: radial-gradient(green, rgb(0, 77, 0));
 }
 
 .floor-2 {
@@ -146,7 +145,7 @@ button:hover {
   padding: 5px 10px;
   background-color: black;
   text-align: center;
-  font-size: clamp(1rem, 0.4706rem + 1.4706vw, 1.5rem);
+  font-size: clamp(0.7rem, 0.1462rem + 2.4615vw, 1.5rem);
 }
 
 .start-game-button, .stop-game-button {
@@ -172,7 +171,7 @@ button:hover {
 }
 
 .reset-score-button {
-  font-size: clamp(0.7rem, 0.4882rem + 0.5882vw, 0.9rem);
+  font-size: clamp(0.6rem, 0.3923rem + 0.9231vw, 0.9rem);
 }
 
 .timer-container {

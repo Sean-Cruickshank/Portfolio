@@ -82,14 +82,14 @@ function plateCreator(icon) {
   return `<div class="plate ${icon}"></div>`
 }
 
-const gameElement = document.querySelector('.js-game');
-const selectElement = document.querySelector('.js-colour-select');
-const colourElement = document.querySelector('.js-colour-input')
-const arrowElement = document.querySelector('.js-arrow-select')
+const gameElement = document.querySelector('.game');
+const selectElement = document.querySelector('.colour-select');
+const colourElement = document.querySelector('.colour-input')
+const arrowElement = document.querySelector('.arrow-select')
 
-const customiserButton = document.querySelector('.js-customiser-button')
-const customiserPanel = document.querySelector('.js-customiser-panel')
-const customiserClose = document.querySelector('.js-customiser-close')
+const customiserButton = document.querySelector('.customiser-button')
+const customiserPanel = document.querySelector('.customiser-panel')
+const customiserClose = document.querySelector('.customiser-close')
 
 function renderCustomiserButton() {
   customiserButton.innerHTML = `
@@ -145,8 +145,8 @@ function renderGrid() {
 }
 
 function renderScores() {
-  const scoreElement = document.querySelector('.js-score');
-  const highScoreElement = document.querySelector('.js-high-score');
+  const scoreElement = document.querySelector('.score');
+  const highScoreElement = document.querySelector('.high-score');
   scoreElement.innerHTML = `Score: ${score}`;
   highScoreElement.innerHTML = `High Score: ${highScore}`
 }
@@ -157,11 +157,11 @@ renderGrid();
 let gameActive = false;
 let timer = 300
 
-const endMessageElement = document.querySelector('.js-end-message')
+const endMessageElement = document.querySelector('.end-message')
 
 const resetHighScoreButton = document.querySelector(".reset-score-button");
-const startGameButton = document.querySelector('.js-start-game-button');
-const stopGameButton = document.querySelector('.js-stop-game-button');
+const startGameButton = document.querySelector('.start-game-button');
+const stopGameButton = document.querySelector('.stop-game-button');
 
 function toggleButtons(status, list) {
   if (status === 'enable') {
@@ -192,7 +192,7 @@ function toggleButtons(status, list) {
 }
 
 function playGame() {
-  const tipElement = document.querySelector('.js-tip');
+  const tipElement = document.querySelector('.tip');
   tipElement.classList.remove('hidden');
   startGameButton.classList.add('hidden');
   stopGameButton.classList.remove('hidden');
@@ -202,7 +202,7 @@ function playGame() {
   const clock = setInterval(() => {
     if (timer > 0) {
       timer--;
-      const timerElement = document.querySelector('.js-timer');
+      const timerElement = document.querySelector('.timer');
       timerElement.innerHTML = `${(timer / 10).toFixed(1)}`
       endMessageElement.classList.add('hidden')
       toggleButtons('disable', ['highscore', 'customiser'])
@@ -254,7 +254,7 @@ function generateEndMessage() {
         >High score: ${highScore}</p>
         <button
           class="tg-button"
-          onclick="document.querySelector('.js-end-message').classList.add('hidden')"
+          onclick="document.querySelector('.end-message').classList.add('hidden')"
         >Close</button>
       </div>
     `
@@ -382,7 +382,7 @@ function setColourPicker() {
     `
   })
   selectElement.innerHTML = `
-    <select class="colour-select js-colour-select" name="colour" id="colour-select">
+    <select class="colour-select colour-select" name="colour" id="colour-select">
       ${optionHTML}
     </select>
   `
