@@ -172,6 +172,7 @@ button:hover {
 
 .reset-score-button {
   font-size: clamp(0.6rem, 0.3923rem + 0.9231vw, 0.9rem);
+  margin-right: 25px;
 }
 
 .timer-container {
@@ -202,14 +203,6 @@ button:hover {
 .boost-active {
   opacity: 0;
   transform: translateY(calc(-50% - 30px));
-}
-
-.tip {
-  position: absolute;
-  bottom: 25%;
-  left: 0;
-  transform: translate(0%, -50%);
-    font-size: clamp(0.6rem, -0.0353rem + 1.7647vw, 1.2rem);
 }
 
 .colour-input {
@@ -307,4 +300,72 @@ button:hover {
 .customiser-close {
   width: calc(20% + 40px);
   margin: 40px 0 10px 0;
+}
+
+.about {
+  position: absolute;
+  display: flex;
+  top: 4px;
+  right: 4px;
+  justify-content: center;
+}
+
+.about-button {
+  border-radius: 100%;
+  width: min-content;
+  aspect-ratio: 1;
+  padding-inline: 12px;
+}
+
+.about-panel {
+  position: absolute;
+  background-color: black;
+  padding: 10px;
+  width: 50%;
+  max-width: 500px;
+  transform: translate();
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 2px solid white;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.about-close {
+  width: calc(20% + 40px);
+  margin: 40px 0 10px 0;
+}
+
+@media (max-width: 450px) {
+  button {
+    width: 40%;
+  }
+  
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-content: center;
+  }
+  
+  .game {
+    width: 90%;
+    margin-inline: auto;
+  }
+
+  .control-panel {
+    display: grid;
+    grid-template-columns: 1fr;
+    margin-inline: auto;
+    padding-bottom: 75px;
+    width: 90%;
+  }
+
+  .reset-score-button, .start-game-button, .stop-game-button, .customiser-button, .score-container, .high-score {
+    margin-inline: auto;
+  }
+
+.reset-score-button {
+  margin-right: auto;
+}
 }

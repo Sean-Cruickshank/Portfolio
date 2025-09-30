@@ -105,12 +105,12 @@ renderCustomiserButton()
 
 customiserButton.addEventListener('click', () => {
   customiserPanel.classList.remove('hidden')
-  toggleButtons('disable', ['highscore', 'start'])
+  toggleButtons('disable', ['highscore', 'start', 'about'])
 })
 
 customiserClose.addEventListener('click', () => {
   customiserPanel.classList.add('hidden')
-  toggleButtons('enable', ['highscore', 'start'])
+  toggleButtons('enable', ['highscore', 'start', 'about'])
 })
 
 function renderGrid() {
@@ -176,6 +176,9 @@ function toggleButtons(status, list) {
     if (list.includes('customiser')) {
       customiserButton.disabled = false
     }
+    if (list.includes('about')) {
+      aboutButton.disabled = false
+    }
   } else if (status === 'disable') {
     if (list.includes('start')) {
       startGameButton.disabled = true
@@ -188,12 +191,13 @@ function toggleButtons(status, list) {
     if (list.includes('customiser')) {
       customiserButton.disabled = true
     }
+    if (list.includes('about')) {
+      aboutButton.disabled = true
+    }
   }
 }
 
 function playGame() {
-  const tipElement = document.querySelector('.tip');
-  tipElement.classList.remove('hidden');
   startGameButton.classList.add('hidden');
   stopGameButton.classList.remove('hidden');
   setValues();
@@ -217,7 +221,6 @@ function playGame() {
       startGameButton.classList.remove('hidden');
       stopGameButton.classList.add('hidden');
       endMessageElement.classList.remove('hidden')
-      tipElement.classList.add('hidden');
       generateEndMessage()
       score = 0
       gameActive = false
@@ -400,4 +403,18 @@ startGameButton.addEventListener('click', () => {
 
 stopGameButton.addEventListener('click', () => {
   killTimer()
+})
+
+const aboutButton = document.querySelector('.about-button')
+const aboutPanel = document.querySelector('.about-panel')
+const aboutClose = document.querySelector('.about-close')
+
+aboutButton.addEventListener('click', () => {
+  aboutPanel.classList.remove('hidden')
+  toggleButtons('disable', ['highscore', 'start', 'customiser'])
+})
+
+aboutClose.addEventListener('click', () => {
+  aboutPanel.classList.add('hidden')
+  toggleButtons('enable', ['highscore', 'start', 'customiser'])
 })
