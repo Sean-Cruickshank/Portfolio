@@ -418,3 +418,37 @@ aboutClose.addEventListener('click', () => {
   aboutPanel.classList.add('hidden')
   toggleButtons('enable', ['highscore', 'start', 'customiser'])
 })
+
+let xDown = null;
+let yDown = null;
+
+function handleTouchStart(evt) {
+  xDown = evt.touches[0].clientX;
+  yDown = evt.touches[0].clientY;
+}
+
+function handleTouchEnd(evt) {
+  if (!xDown || !yDown) return
+
+  const xUp = evt.changedTouches[0].clientX;
+  const yUp = evt.changedTouches[0].clientY;
+
+  const xDiff = xDown - xUp;
+  const yDiff = yDown - yUp;
+
+  if (Math.abs(xDiff) > Math.abs(yDiff)) {  
+    xDiff > 0
+      ? console.log('Swiped left!')
+      : console.log('Swiped right!')
+  } else {
+    xDiff > 0
+      ? console.log('Swiped up!')
+      : console.log('Swiped down!')
+  }
+
+  xDown = null;
+  yDown = null;
+}
+
+document.addEventListener('touchstart', handleTouchStart, false);
+document.addEventListener('touchend', handleTouchEnd, false);
