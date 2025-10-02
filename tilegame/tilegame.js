@@ -281,27 +281,23 @@ function resetHighScore() {
 }
 
 function movePos(direction) {
-  if (playerPos.x > 1 && direction === 'ArrowLeft') {
-    if (checkPos(direction)) {
-      playerPos.x --;
-      renderGrid()
-    }
-  } else if (playerPos.x < 12 && direction === 'ArrowRight') {
-    if (checkPos(direction)) {
-      playerPos.x ++;
-      renderGrid()
-    }
-  } else if (playerPos.y > 1 && direction === 'ArrowUp') {
-    if (checkPos('ArrowUp')) {
-      playerPos.y--
-      renderGrid()
-    }
-  } else if (playerPos.y < 12 && direction === 'ArrowDown') {
-    if (checkPos('ArrowDown')) {
-      playerPos.y++
-      renderGrid()
-    }
+  if (direction === 'ArrowLeft') {
+    const check = plateArray.find(plate => plate.x === playerPos.x - 1 && plate.y === playerPos.y)
+    if (check && !check.grey && playerPos.x > 1) playerPos.x--
   }
+  if (direction === 'ArrowRight') {
+    const check = plateArray.find(plate => plate.x === playerPos.x + 1 && plate.y === playerPos.y)
+    if (check && !check.grey && playerPos.x < 12) playerPos.x++
+  }
+  if (direction === 'ArrowUp') {
+    const check = plateArray.find(plate => plate.x === playerPos.x && plate.y === playerPos.y - 1)
+    if (check && !check.grey && playerPos.y > 1) playerPos.y--
+  }
+  if (direction === 'ArrowDown') {
+    const check = plateArray.find(plate => plate.x === playerPos.x && plate.y === playerPos.y + 1)
+    if (check && !check.grey && playerPos.y < 12) playerPos.y++
+  }
+  renderGrid()
 }
 
 addEventListener('keydown', (input) => {
@@ -314,21 +310,33 @@ addEventListener('keydown', (input) => {
   }
 })
 
-function checkPos(move) {
-  let result = true;
-  plateArray.forEach((plate) => {
-    if (move === 'ArrowLeft' && plate.x === playerPos.x - 1 && plate.y === playerPos.y) {
-      if (plate.grey) result = false
-    } else if (move === 'ArrowRight' && plate.x === playerPos.x + 1 && plate.y === playerPos.y) {
-      if (plate.grey) result = false
-    } else if (move === 'ArrowUp' && plate.x === playerPos.x && plate.y === playerPos.y - 1) {
-      if (plate.grey) result = false
-    } else if (move === 'ArrowDown' && plate.x === playerPos.x && plate.y === playerPos.y + 1) {
-      if (plate.grey) result = false
-    }
-  })
-  return result
+let xDown = null;
+let yDown = null;
+
+function handleTouchStart(evt) {
+  xDown = evt.touches[0].clientX;
+  yDown = evt.touches[0].clientY;
 }
+
+function handleTouchEnd(evt) {
+  if (!xDown || !yDown) return
+
+  const xUp = evt.changedTouches[0].clientX;
+  const yUp = evt.changedTouches[0].clientY;
+  const xDiff = xDown - xUp;
+  const yDiff = yDown - yUp;
+
+  if (Math.abs(xDiff) > Math.abs(yDiff)) {  
+    xDiff > 0 ? movePos('ArrowLeft') : movePos('ArrowRight')
+  } else {
+    yDiff > 0 ? movePos('ArrowUp') : movePos('ArrowDown')
+  }
+  xDown = null;
+  yDown = null;
+}
+
+document.addEventListener('touchstart', handleTouchStart, false);
+document.addEventListener('touchend', handleTouchEnd, false);
 
 const colourArray = [
   {name: 'Blue', hex: '#3F48CC', locked: false, required: 0},
@@ -418,37 +426,3 @@ aboutClose.addEventListener('click', () => {
   aboutPanel.classList.add('hidden')
   toggleButtons('enable', ['highscore', 'start', 'customiser'])
 })
-
-let xDown = null;
-let yDown = null;
-
-function handleTouchStart(evt) {
-  xDown = evt.touches[0].clientX;
-  yDown = evt.touches[0].clientY;
-}
-
-function handleTouchEnd(evt) {
-  if (!xDown || !yDown) return
-
-  const xUp = evt.changedTouches[0].clientX;
-  const yUp = evt.changedTouches[0].clientY;
-
-  const xDiff = xDown - xUp;
-  const yDiff = yDown - yUp;
-
-  if (Math.abs(xDiff) > Math.abs(yDiff)) {  
-    xDiff > 0
-      ? console.log('Swiped left!')
-      : console.log('Swiped right!')
-  } else {
-    xDiff > 0
-      ? console.log('Swiped up!')
-      : console.log('Swiped down!')
-  }
-
-  xDown = null;
-  yDown = null;
-}
-
-document.addEventListener('touchstart', handleTouchStart, false);
-document.addEventListener('touchend', handleTouchEnd, false);
