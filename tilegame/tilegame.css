@@ -33,6 +33,26 @@ button:hover {
   cursor: default;
 }
 
+.popup {
+  position: absolute;
+  background-color: black;
+  padding: 10px;
+  width: 50%;
+  margin: 0;
+  max-width: 500px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 2px solid white;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.popup button {
+  width: calc(20% + 40px);
+  margin: 40px 0 10px 0;
+}
+
 .grid {
   position: relative;
   display: flex;
@@ -202,21 +222,6 @@ button:hover {
   display: none;
 }
 
-.end-message {
-  position: absolute;
-  background-color: black;
-  padding: 10px;
-  margin: 0;
-  width: 50%;
-  max-width: 500px;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  border: 2px solid white;
-  border-radius: 10px;
-  text-align: center;
-}
-
 .end-message-message {
   font-size: clamp(0.6rem, -0.0353rem + 1.7647vw, 1.2rem);
 }
@@ -230,11 +235,6 @@ button:hover {
 
 .end-message-score {
   font-size: clamp(0.8rem, 0.3765rem + 1.1765vw, 1.2rem);
-}
-
-.end-message button {
-  width: 40%;
-  margin-top: 10px;
 }
 
 .customiser-button {
@@ -252,20 +252,7 @@ button:hover {
     transform: scale(0.95);
   }
 
-.customiser-panel {
-  position: absolute;
-  background-color: black;
-  padding: 10px;
-  width: 50%;
-  max-width: 500px;
-  transform: translate();
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  border: 2px solid white;
-  border-radius: 10px;
-  text-align: center;
-}
+
 
 .customiser-option {
   display: flex;
@@ -290,12 +277,7 @@ button:hover {
   background-color: rgb(70, 70, 70);
 }
 
-.customiser-close {
-  width: calc(20% + 40px);
-  margin: 40px 0 10px 0;
-}
-
-.settings {
+.control-panel-top {
   display: flex;
   gap: 10px;
   justify-content: space-between;
@@ -304,7 +286,6 @@ button:hover {
 
 .reset-score-button {
   font-size: clamp(0.6rem, 0.3923rem + 0.9231vw, 0.9rem);
-
 }
 
 .about {
@@ -320,24 +301,45 @@ button:hover {
   padding-inline: 9px;
 }
 
-.about-panel {
-  position: absolute;
-  background-color: black;
-  padding: 10px;
-  width: 50%;
-  max-width: 500px;
-  transform: translate();
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  border: 2px solid white;
-  border-radius: 10px;
-  text-align: center;
+.touch-controls {
+  position: relative;
+  width: 300px;
+  height: 250px;
+  margin-top: auto;
+  margin-bottom: auto;
 }
 
-.about-close {
-  width: calc(20% + 40px);
-  margin: 40px 0 10px 0;
+.touch-controls button {
+  width: 100px;
+  aspect-ratio: 2;
+}
+
+.touch-left {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translate(0, -50%);
+}
+
+.touch-right {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translate(0, -50%);
+}
+
+.touch-up {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+
+.touch-down {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, 0%);
 }
 
 @media (max-width: 450px) {
@@ -381,7 +383,7 @@ button:hover {
     margin-inline: auto;
   }
 
-  .settings {
+  .control-panel-top {
     gap: 0px;
     justify-content: center;
   }
@@ -391,7 +393,7 @@ button:hover {
     left: 4px;
   }
 
-  .end-message, .customiser-panel, .about-panel {
+  .popup {
     top: 25%;
     width: 75%;
   }

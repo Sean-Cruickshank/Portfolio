@@ -281,23 +281,28 @@ function resetHighScore() {
 }
 
 function movePos(direction) {
-  if (direction === 'ArrowLeft') {
-    const check = plateArray.find(plate => plate.x === playerPos.x - 1 && plate.y === playerPos.y)
-    if (check && !check.grey && playerPos.x > 1) playerPos.x--
+  if (gameActive) {
+    if (direction === 'ArrowLeft') {
+      const check = plateArray.find(plate => plate.x === playerPos.x - 1 && plate.y === playerPos.y)
+      if (check && !check.grey && playerPos.x > 1) playerPos.x--
+      renderGrid()
+    }
+    if (direction === 'ArrowRight') {
+      const check = plateArray.find(plate => plate.x === playerPos.x + 1 && plate.y === playerPos.y)
+      if (check && !check.grey && playerPos.x < 12) playerPos.x++
+      renderGrid()
+    }
+    if (direction === 'ArrowUp') {
+      const check = plateArray.find(plate => plate.x === playerPos.x && plate.y === playerPos.y - 1)
+      if (check && !check.grey && playerPos.y > 1) playerPos.y--
+      renderGrid()
+    }
+    if (direction === 'ArrowDown') {
+      const check = plateArray.find(plate => plate.x === playerPos.x && plate.y === playerPos.y + 1)
+      if (check && !check.grey && playerPos.y < 12) playerPos.y++
+      renderGrid()
+    }
   }
-  if (direction === 'ArrowRight') {
-    const check = plateArray.find(plate => plate.x === playerPos.x + 1 && plate.y === playerPos.y)
-    if (check && !check.grey && playerPos.x < 12) playerPos.x++
-  }
-  if (direction === 'ArrowUp') {
-    const check = plateArray.find(plate => plate.x === playerPos.x && plate.y === playerPos.y - 1)
-    if (check && !check.grey && playerPos.y > 1) playerPos.y--
-  }
-  if (direction === 'ArrowDown') {
-    const check = plateArray.find(plate => plate.x === playerPos.x && plate.y === playerPos.y + 1)
-    if (check && !check.grey && playerPos.y < 12) playerPos.y++
-  }
-  renderGrid()
 }
 
 addEventListener('keydown', (input) => {
@@ -310,15 +315,28 @@ addEventListener('keydown', (input) => {
   }
 })
 
+let touchpadEnabled = false
+const touchControls = document.querySelector('.touch-controls')
+const toggleTouchpad = document.querySelector('.toggle-touchpad')
+toggleTouchpad.addEventListener('click', () => {
+  if (touchpadEnabled) {
+    touchpadEnabled = false
+    touchControls.classList.add('hidden')
+  } else {
+    touchpadEnabled = true
+    touchControls.classList.remove('hidden')
+  }
+})
+
 let xDown = null;
 let yDown = null;
 
-function handleTouchStart(evt) {
+function handleSwipeStart(evt) {
   xDown = evt.touches[0].clientX;
   yDown = evt.touches[0].clientY;
 }
 
-function handleTouchEnd(evt) {
+function handleSwipeEnd(evt) {
   if (!xDown || !yDown) return
 
   const xUp = evt.changedTouches[0].clientX;
@@ -326,17 +344,28 @@ function handleTouchEnd(evt) {
   const xDiff = xDown - xUp;
   const yDiff = yDown - yUp;
 
-  if (Math.abs(xDiff) > Math.abs(yDiff)) {  
-    xDiff > 0 ? movePos('ArrowLeft') : movePos('ArrowRight')
-  } else {
-    yDiff > 0 ? movePos('ArrowUp') : movePos('ArrowDown')
+  if (!touchpadEnabled) {
+    if (Math.abs(xDiff) > Math.abs(yDiff)) {  
+      xDiff > 0 ? movePos('ArrowLeft') : movePos('ArrowRight')
+    } else {
+      yDiff > 0 ? movePos('ArrowUp') : movePos('ArrowDown')
+    }
   }
   xDown = null;
   yDown = null;
 }
 
-document.addEventListener('touchstart', handleTouchStart, false);
-document.addEventListener('touchend', handleTouchEnd, false);
+document.addEventListener('touchstart', handleSwipeStart, false);
+document.addEventListener('touchend', handleSwipeEnd, false);
+
+document.querySelector('.touch-left').addEventListener('click', () => touchpad('ArrowLeft'))
+document.querySelector('.touch-right').addEventListener('click', () => touchpad('ArrowRight'))
+document.querySelector('.touch-up').addEventListener('click', () => touchpad('ArrowUp'))
+document.querySelector('.touch-down').addEventListener('click', () => touchpad('ArrowDown'))
+
+function touchpad(direction) {
+  if (touchpadEnabled) movePos(direction)
+}
 
 const colourArray = [
   {name: 'Blue', hex: '#3F48CC', locked: false, required: 0},
@@ -425,4 +454,18 @@ aboutButton.addEventListener('click', () => {
 aboutClose.addEventListener('click', () => {
   aboutPanel.classList.add('hidden')
   toggleButtons('enable', ['highscore', 'start', 'customiser'])
+})
+
+const settingsButton = document.querySelector('.settings-button')
+const settingsPanel = document.querySelector('.settings-panel')
+const settingsClose = document.querySelector('.settings-close')
+
+settingsButton.addEventListener('click', () => {
+  settingsPanel.classList.remove('hidden')
+  toggleButtons('disable', ['start', 'customiser'])
+})
+
+settingsClose.addEventListener('click', () => {
+  settingsPanel.classList.add('hidden')
+  toggleButtons('enable', ['start', 'customiser'])
 })

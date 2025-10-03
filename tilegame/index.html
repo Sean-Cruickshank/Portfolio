@@ -6,6 +6,7 @@
   <title>Sean Cruickshank - Tile Game</title>
   <link rel="icon" href="/images/favicon.ico"/>
   <link rel="stylesheet" href="./tilegame.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
 </head>
 <body>
   <div class="grid">
@@ -14,11 +15,13 @@
     </div>
     
     <div class="control-panel">
-      <div class="settings">
+      <div class="control-panel-top">
         <div class="about">
           <button class="about-button">?</button>
         </div>
-        <button class="reset-score-button">Reset Highscore</button>
+        <div class="settings">
+          <button class="settings-button"><i class="fa-solid fa-gear"></i></button>
+        </div>
       </div>
 
       <button class="customiser-button"></button>
@@ -38,9 +41,16 @@
       <button class="stop-game-button hidden">Stop</button>
     </div>
 
-    <div class="end-message hidden"></div>
+    <div class="touch-controls">
+      <button class="touch-left"><i class="fa-solid fa-arrow-left"></i></button>
+      <button class="touch-right"><i class="fa-solid fa-arrow-right"></i></button>
+      <button class="touch-up"><i class="fa-solid fa-arrow-up"></i></button>
+      <button class="touch-down"><i class="fa-solid fa-arrow-down"></i></button>
+    </div>
 
-    <div class="customiser-panel hidden">
+    <div class="end-message popup hidden"></div>
+
+    <div class="customiser-panel popup hidden">
       <h2>Customisation Settings</h2>
       <div class="customiser-option">
         <p>Colour:</p>
@@ -67,10 +77,16 @@
       <input class="colour-input" type="color" />
     </div>
 
-    <div class="about-panel hidden">
+    <div class="about-panel popup hidden">
       <p>Reset the board at any time by hitting the 'Enter' key!</p>
       <p>test</p>
       <button class="about-close">Close</button>
+    </div>
+
+    <div class="settings-panel popup hidden">
+      <button class="reset-score-button">Reset Highscore</button>
+      <button class="toggle-touchpad">Toggle Touchpad</button>
+      <button class="settings-close">Close</button>
     </div>
   </div>
 
