@@ -42,10 +42,10 @@
     </div>
 
     <div class="touch-controls hidden">
-      <button class="touch-left"><i class="fa-solid fa-arrow-left"></i></button>
-      <button class="touch-right"><i class="fa-solid fa-arrow-right"></i></button>
-      <button class="touch-up"><i class="fa-solid fa-arrow-up"></i></button>
-      <button class="touch-down"><i class="fa-solid fa-arrow-down"></i></button>
+      <button class="touch-left ArrowLeft"><i class="fa-solid fa-arrow-left"></i></button>
+      <button class="touch-right ArrowRight"><i class="fa-solid fa-arrow-right"></i></button>
+      <button class="touch-up ArrowUp"><i class="fa-solid fa-arrow-up"></i></button>
+      <button class="touch-down ArrowDown"><i class="fa-solid fa-arrow-down"></i></button>
     </div>
 
     <div class="end-message popup hidden"></div>
@@ -80,15 +80,15 @@
     <div class="about-panel popup hidden">
       <h2>How to Play!</h2>
       <p>The goal of the game is to collect as many keys as you can before the timer ends</p>
-      <div class="plate key" style="width: 50px; margin-inline: auto;"></div>
+      <div class="plate key about-dummy"></div>
 
       <p>Reaching higher scores allows you to unlock new backgrounds and customisation options</p>
 
       <p>Collect timers to extend the length of a match and score more points</p>
       <div class="about-clocks">
-        <div class="plate clock-2" style="width: 50px; margin-inline: auto;"></div>
-        <div class="plate clock-3" style="width: 50px; margin-inline: auto;"></div>
-        <div class="plate clock-5" style="width: 50px; margin-inline: auto;"></div>
+        <div class="plate clock-2 about-dummy"></div>
+        <div class="plate clock-3 about-dummy"></div>
+        <div class="plate clock-5 about-dummy"></div>
       </div>
 
       <p>Each level is randomly generated, so you may sometimes encounter a level where the key is inaccessible</p>
@@ -101,9 +101,12 @@
       <button class="toggle-touchpad">Toggle Touchpad</button>
       <button class="settings-close">Close</button>
     </div>
+
+    <div class="popup popup-generic hidden">
+      <div class="popup-content"></div>
+    </div>
   </div>
 
-  
-  <script type="module" src="tilegame.js"></script>
+  <script type="module" src="ts/index.ts"></script>
 </body>
 </html>

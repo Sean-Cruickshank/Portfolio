@@ -321,6 +321,11 @@ button:hover {
   background-color: yellow;
 }
 
+.about-dummy {
+  width: 50px;
+  margin-inline: auto;
+}
+
 .settings {
   justify-content: right;
 }
