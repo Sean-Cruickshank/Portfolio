@@ -1,80 +1,10 @@
 import { toggleButtons } from "./utils";
-import { score, highScore } from "./game";
+import { score, highScore, resetHighScore } from "./game";
+import { selectElementOnInput, colourElementOnInput, arrowElementOnInput, setColourSelect, setArrowSelect } from "./customiser";
+import { toggleTouchpad } from "./controls";
+import { aboutData, popupData } from "./data";
 
-const popupData = [
-  {
-    mode: 'settings',
-    content: `
-      <button class="reset-score-button">Reset Highscore</button>
-      <button class="toggle-touchpad">Toggle Touchpad</button>
-    `
-  }, {
-    mode: 'about',
-    content: `
-      <h2>How to Play!</h2>
-      <p>The goal of the game is to collect as many keys as you can before the timer ends</p>
-      <div class="plate key about-dummy"></div>
-
-      <p>Reaching higher scores allows you to unlock new backgrounds and customisation options</p>
-
-      <p>Collect timers to extend the length of a match and score more points</p>
-      <div class="about-clocks">
-        <div class="plate clock-2 about-dummy"></div>
-        <div class="plate clock-3 about-dummy"></div>
-        <div class="plate clock-5 about-dummy"></div>
-      </div>
-
-      <p>Each level is randomly generated, so you may sometimes encounter a level where the key is inaccessible</p>
-      <p>Reset the board at any time by hitting the 'Enter' key or by pressing the reset button!</p>
-    `
-  }, {
-    mode: 'customiser',
-    content: `
-      <h2>Customisation Settings</h2>
-      <div class="customiser-option">
-        <p>Colour:</p>
-        <select class="colour-select" name="colour" id="colour-select">
-          <option title="Blue" value="blue">Blue</option>
-          <option title="Red" value="red">Red</option>
-          <option title="Yellow" value="yellow">Yellow</option>
-          <option title="Green" value="green">Green</option>
-          <option title="Teal" value="teal">Teal</option>
-          <option title="Orange" value="orange">Orange</option>
-          <option title="Custom" value="custom">Custom</option>
-        </select>
-      </div>
-
-      <div class="customiser-option">
-        <p>Frame:</p>
-        <select class="arrow-select" name="arrow" id="arrow-select">
-          <option title="Black" value="black">Black</option>
-          <option title="White" value="white">White</option>
-          <option title="Gold" value="gold">Gold</option>
-        </select>
-      </div>
-      <input class="colour-input" type="color" />
-    `
-  }
-]
-
-// function togglePopup(popup: string) {
-//     const button = document.querySelector(`.${popup}-button`)
-//     const panel = document.querySelector(`.${popup}-panel`)
-//     const close = document.querySelector(`.${popup}-close`)
-
-//     button?.addEventListener('click', () => {
-//     panel?.classList.remove('hidden')
-//     toggleButtons(popup, 'disable')
-//     })
-
-//     close?.addEventListener('click', () => {
-//     panel?.classList.add('hidden')
-//     toggleButtons(popup, 'enable')
-//     }) 
-// }
-
-// const popups = ['about', 'settings', 'customiser']
-// popups.forEach(popup => togglePopup(popup))
+let aboutPage = 0
 
 export function generateEndMessage() {
   const endMessageElement = document.querySelector('.end-message')
@@ -107,9 +37,9 @@ export function generateEndMessage() {
 }
 
 const popupElement = document.querySelector('.popup-generic')
+const contentElement = document.querySelector('.popup-content')
 
 function generatePopup(mode: string) {
-  const contentElement = document.querySelector('.popup-content')
   popupElement?.classList.remove('hidden')
   const data = popupData.find(popup => popup.mode === mode)
   if (contentElement && data) contentElement.innerHTML = `
@@ -118,11 +48,45 @@ function generatePopup(mode: string) {
   `
   toggleButtons(mode, 'disable')
   contentElement?.querySelector('.popup-close')?.addEventListener('click', () => closePopup(mode))
+
+  if (mode === 'customiser') {
+    contentElement?.querySelector('.colour-select')?.addEventListener('input', () => selectElementOnInput())
+    contentElement?.querySelector('.colour-input')?.addEventListener('input', () => colourElementOnInput())
+    contentElement?.querySelector('.arrow-select')?.addEventListener('input', () => arrowElementOnInput())
+    setColourSelect()
+    setArrowSelect()
+  }
+
+  if (mode === 'settings') {
+    contentElement?.querySelector(".reset-score-button")?.addEventListener('click', () => resetHighScore())
+    toggleTouchpad()
+  }
+
+  if (mode === 'about') {
+    contentElement?.querySelector('.about-section-left')?.addEventListener('click', () => changeAboutPage('-'))
+    contentElement?.querySelector('.about-section-right')?.addEventListener('click', () => changeAboutPage('+'))
+    renderAboutContent()
+  }
+}
+
+function changeAboutPage(val: string) {
+  if (val === '+') aboutPage < aboutData.length - 1 ? aboutPage++ : aboutPage = 0
+  if (val === '-') aboutPage > 0 ? aboutPage-- : aboutPage = aboutData.length - 1
+  renderAboutContent()
+}
+
+function renderAboutContent() {
+  const aboutContent = document.querySelector('.about-content')
+  if (aboutContent) aboutContent.innerHTML = `
+    ${aboutData[aboutPage]}
+    <p class="about-page-count">${aboutPage + 1}/${aboutData.length}</p>
+  `
 }
 
 function closePopup(mode: string) {
   popupElement?.classList.add('hidden')
   toggleButtons(mode, 'enable')
+  if (contentElement) contentElement.innerHTML = ''
 }
 
 document.querySelector('.settings-button')?.addEventListener('click', () => generatePopup('settings'))

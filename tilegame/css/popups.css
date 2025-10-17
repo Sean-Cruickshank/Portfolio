@@ -1,0 +1,147 @@
+.popup {
+  position: absolute;
+  background-color: black;
+  padding: 10px;
+  width: 50%;
+  margin: 0;
+  max-width: 500px;
+  max-height: 60vh;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 2px solid white;
+  border-radius: 10px;
+  text-align: center;
+  overflow-y: scroll;
+  z-index: 3;
+}
+
+.popup button {
+  width: calc(20% + 40px);
+  margin: 40px 0 10px 0;
+}
+
+/* GAME OVER */
+
+.end-message-message {
+  font-size: clamp(0.6rem, -0.0353rem + 1.7647vw, 1.2rem);
+}
+
+.end-message h2 {
+  font-size: clamp(1.2rem, 0.3529rem + 2.3529vw, 2rem);
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-weight: 400;
+  border-bottom: none;
+}
+
+.end-message-score {
+  font-size: clamp(0.8rem, 0.3765rem + 1.1765vw, 1.2rem);
+}
+
+/* CUSTOMISER */
+
+.colour-input {
+  display: none;
+}
+
+.customiser-button {
+  width: min(50px, 25%);
+  aspect-ratio: 1;
+  padding: 0;
+  margin-top: 5px;
+  margin-inline: auto;
+  cursor: pointer;
+  transition: 0.2s;
+  border: none;
+  z-index: 2;
+}
+
+  .customiser-button:hover {
+    box-shadow: 0 0 15px white;
+    transform: scale(0.95);
+  }
+
+.customiser-option {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.colour-select, .arrow-select {
+  margin-top: 10px;
+  background-color: rgb(90, 90, 90);
+  border: 2px solid white;
+  border-radius: 5px;
+  box-shadow: 3px 5px 5px rgba(30, 30, 30, 0.5);
+  cursor: pointer;
+  padding: 4px 5px;
+  width: calc(15% + 50px);
+  color: white;
+  text-align: center;
+}
+
+.colour-select option:disabled, .arrow-select option:disabled  {
+  background-color: rgb(70, 70, 70);
+}
+
+/* ABOUT */
+
+.about-section {
+  position: relative;
+}
+
+.about-section-left, .about-section-right {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 30px !important;
+  aspect-ratio: 0.5;
+  padding: 0;
+}
+
+.about-section-left {
+  left: 0;
+}
+
+.about-section-right {
+  right: 0;
+}
+
+.about-content {
+  position: relative;
+  min-height: 200px;
+  width: 80%;
+  margin-inline: auto;
+  margin-bottom: -20px;
+  padding-bottom: 25px;
+}
+
+.about-page-count {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.about-clocks {
+  display: flex;
+  justify-content: space-around;
+}
+
+.about-dummy {
+  width: 50px;
+  margin-inline: auto;
+}
+
+/* SETTINGS */
+
+.reset-score-button {
+  font-size: clamp(0.6rem, 0.3923rem + 0.9231vw, 0.9rem);
+}
+
+@media (max-width: 450px) {
+  .popup {
+    top: 25%;
+    width: 75%;
+  }
+}

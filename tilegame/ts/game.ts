@@ -1,11 +1,12 @@
 import { toggleButtons, rollOdds, boost, randomPos } from "./utils";
-import { setColourPicker, changeColour, colourArray, selectedColour } from "./customiser";
+import { changeColour, colourArray, selectedColour } from "./customiser";
 import { generateEndMessage } from "./popups";
+import { backgroundData } from "./data";
 
 type plate = {
-    grey: boolean;
-    x: number;
-    y: number;
+  grey: boolean;
+  x: number;
+  y: number;
 }
 
 let plateArray: plate[] = [];
@@ -64,19 +65,6 @@ export function setValues() {
   }
 }
 
-function plateCreator(icon: string) {
-  const level = Math.min(Math.floor(score / 5) + 1, 5)
-  const arrowElement: HTMLSelectElement | null = document.querySelector('.arrow-select')
-  if (icon === 'floor' || icon === 'wall') {
-    return `<div class="plate ${icon}-${level}"></div>`
-  }
-  if (icon === 'player' && arrowElement) {
-    return `<div class="plate player-icon player-icon-${arrowElement.value}" style="background-color: ${selectedColour};"></div>`
-  }
-  
-  return `<div class="plate ${icon}"></div>`
-}
-
 export function renderGrid() {
   let gameElementHTML = '';
   plateArray.forEach((plate) => {
@@ -87,7 +75,7 @@ export function renderGrid() {
     } else if (plate.x === goalPos.x && plate.y === goalPos.y) {
       gameElementHTML += plateCreator('key')
     } else if ((plate.x === clockPos.x && plate.y === clockPos.y) && clockSpawn && clockActive) {
-      gameElementHTML += plateCreator(`clock-${clockType}`)
+      gameElementHTML += plateCreator('clock')
     } else {
       gameElementHTML += plateCreator('floor')
     }
@@ -110,6 +98,48 @@ export function renderGrid() {
   }
 }
 
+function plateCreator(icon: string) {
+  if (icon === 'floor' || icon === 'wall') {
+    const level = Math.min(Math.floor(score / 5) + 1, 5)
+    return `
+    <div
+      class="plate ${icon}"
+      style="${backgroundData[level - 1][icon]};"
+    ></div>`
+  }
+
+  if (icon === 'player') {
+    let arrowColour = localStorage.getItem('arrow') || 'black'
+    return `
+      <div
+        class="plate player-icon"
+        style="
+          background-color: ${selectedColour};
+          background-image: url(/images/tilegame/player-template-${arrowColour}.png);
+        "
+      ></div>`
+  }
+
+  if (icon === 'key') {
+    return `
+      <div
+        class="plate key"
+        style="background-image: url(/images/tilegame/key.png);"
+      ></div>
+    `
+  }
+
+  if (icon === 'clock') {
+    return `
+      <div
+        class="plate clock"
+        style="background-image: url(/images/tilegame/clock-${clockType}.png);"
+      ></div>`
+  }
+  
+  return `<div class="plate ${icon}"></div>`
+}
+
 function playGame() {
   startGameButton?.classList.add('hidden');
   stopGameButton?.classList.remove('hidden');
@@ -129,7 +159,7 @@ function playGame() {
         localStorage.setItem('highscore', String(highScore))
         renderScores()
       }
-      setColourPicker()
+      // setColourSelect()
       toggleButtons('start-game', 'enable')
       startGameButton?.classList.remove('hidden');
       stopGameButton?.classList.add('hidden');
@@ -150,7 +180,7 @@ function renderScores() {
   if (highScoreElement) highScoreElement.innerHTML = `High Score: ${highScore}`
 }
 
-function resetHighScore() {
+export function resetHighScore() {
   highScore = 0;
   localStorage.setItem('highscore', String(highScore))
   const match = colourArray.find(colour => colour.hex === selectedColour)
@@ -160,14 +190,13 @@ function resetHighScore() {
     changeColour('#3F48CC')
   }
   renderScores()
-  setColourPicker()
+  // setColourSelect()
 }
 
-document.querySelector(".reset-score-button")?.addEventListener('click', () => resetHighScore())
 startGameButton?.addEventListener('click', () => playGame())
 stopGameButton?.addEventListener('click', () => timer = 1)
 
-setColourPicker()
+// setColourSelect()
 setValues();
 renderGrid();
 

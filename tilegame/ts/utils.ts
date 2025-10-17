@@ -1,6 +1,6 @@
 export function toggleButtons(activator: string, condition: 'enable' | 'disable') {
 
-    const buttonsList = ['reset-score', 'start-game', 'customiser', 'about', 'settings']
+    const buttonsList = ['start-game', 'customiser', 'about', 'settings']
     let index = buttonsList.indexOf(activator)
     index > -1 ? buttonsList.splice(index, 1) : console.warn('Invalid activator for toggleButtons')
 

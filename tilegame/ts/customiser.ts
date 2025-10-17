@@ -1,21 +1,23 @@
 import { highScore } from "./game";
 
 const customiserButton = document.querySelector('.customiser-button')
-const arrowElement: HTMLSelectElement | null = document.querySelector('.arrow-select')
-const selectElement: HTMLSelectElement | null = document.querySelector('.colour-select');
-const colourElement: HTMLInputElement | null = document.querySelector('.colour-input')
 
 let customColour = localStorage.getItem('custom-colour') || 'white'
-let selectedColour = localStorage.getItem('colour') || 'blue'
+let selectedColour = localStorage.getItem('colour') || '#3F48CC'
 
 let isCustomSelected = false
 
-function renderCustomiserButton() {
-  if (customiserButton && arrowElement)
+export function renderCustomiserButton() {
+  const arrowColour = localStorage.getItem('arrow') || 'black'
+  if (customiserButton)
   customiserButton.innerHTML = `
     <div
-        class="player-icon player-icon-${arrowElement.value}"
-        style="background-color: ${selectedColour}; height: 100%;"
+        class="player-icon"
+        style="
+          background-color: ${selectedColour};
+          height: 100%;
+          background-image: url(/images/tilegame/player-template-${arrowColour}.png);
+        "
         title="Customisation Settings"
     ></div>
   `
@@ -31,6 +33,12 @@ export const colourArray = [
   {name: 'Custom', hex: '#FFFFFF', locked: true, required: 20},
 ]
 
+const arrowArray = [
+  {name: 'Black', hex: '#000000'},
+  {name: 'White', hex: '#FFFFFF'},
+  {name: 'Gold', hex: '#D2AE3A'},
+]
+
 function customCheck() {
   const match = colourArray.find(colour => colour.hex === selectedColour)
   isCustomSelected = !match
@@ -42,26 +50,37 @@ export function changeColour(colour: string) {
   renderCustomiserButton()
 }
 
-selectElement && selectElement.addEventListener('input', () => {
-  if (selectElement.value === '#FFFFFF') {
-    changeColour(customColour)
-    colourElement && colourElement.click()
-  } else {
-    changeColour(selectElement.value)
+export function colourElementOnInput() {
+  const colourElement: HTMLInputElement | null = document.querySelector('.colour-input')
+  if (colourElement) {
+    changeColour(colourElement.value)
+    customColour = colourElement.value
   }
-})
-
-colourElement && colourElement.addEventListener('input', () => {
-  changeColour(colourElement.value)
-  customColour = colourElement.value
   localStorage.setItem('custom-colour', customColour)
-})
+}
 
-arrowElement && arrowElement.addEventListener('input', () => {
+export function selectElementOnInput() {  
+  const selectElement: HTMLSelectElement | null = document.querySelector('.colour-select')
+  const colourElement: HTMLInputElement | null = document.querySelector('.colour-input')
+  if (selectElement) {
+    if (selectElement.value === '#FFFFFF') {
+      changeColour(customColour)
+      colourElement && colourElement.click()
+    } else {
+      changeColour(selectElement.value)
+    }
+  }
+}
+
+export function arrowElementOnInput() {
+  const arrowElement: HTMLSelectElement | null = document.querySelector('.arrow-select')
+  const arrowValue = arrowArray.find(item => item.hex === arrowElement?.value)?.name.toLowerCase() || 'black'
+  if (arrowElement) localStorage.setItem('arrow', arrowValue)
   renderCustomiserButton()
-})
+}
 
-export function setColourPicker() {
+export function setColourSelect() {
+  const selectElement: HTMLSelectElement | null = document.querySelector('.colour-select')
   let optionHTML = ''
   customCheck()
   colourArray.forEach(option => {
@@ -76,6 +95,26 @@ export function setColourPicker() {
   })
   if (selectElement) selectElement.innerHTML = `
     <select class="colour-select colour-select" name="colour" id="colour-select">
+      ${optionHTML}
+    </select>
+  `
+}
+
+export function setArrowSelect() {
+  const arrowColour = localStorage.getItem('arrow') || 'black'
+  const arrowElement: HTMLSelectElement | null = document.querySelector('.arrow-select')
+  let optionHTML = ''
+  arrowArray.forEach(option => {
+    optionHTML += `
+      <option
+        value="${option.hex}"
+        title="${option.name}"
+        ${option.name.toLowerCase() === arrowColour ? 'selected=true' : ''}
+      >${option.name}</option>
+    `
+  })
+  if (arrowElement) arrowElement.innerHTML = `
+    <select class="arrow-select" name="arrow" id="arrow-select">
       ${optionHTML}
     </select>
   `

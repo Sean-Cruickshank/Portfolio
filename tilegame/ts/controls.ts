@@ -36,24 +36,26 @@ addEventListener('keydown', (input) => {
 })
 
 let touchpadEnabled = false
-const touchControls = document.querySelector('.touch-controls')
-const toggleTouchpad = document.querySelector('.toggle-touchpad')
 
-toggleTouchpad?.addEventListener('click', () => {
-  if (touchpadEnabled) {
-    touchpadEnabled = false
-    touchControls?.classList.add('hidden')
-  } else {
-    touchpadEnabled = true
-    touchControls?.classList.remove('hidden')
-  }
-})
+function toggleTouchpad() {
+  const touchControls = document.querySelector('.touch-controls')
+  const toggleTouchpadButton = document.querySelector('.toggle-touchpad-button')
+  
+  toggleTouchpadButton?.addEventListener('click', () => {
+    if (touchpadEnabled) {
+      touchpadEnabled = false
+      touchControls?.classList.add('hidden')
+    } else {
+      touchpadEnabled = true
+      touchControls?.classList.remove('hidden')
+    }
+  })
+}
 
 let xDown: number | null = null;
 let yDown: number | null = null;
 
 function handleSwipeStart(event: TouchEvent) {
-  console.log(typeof(event))
   xDown = event.touches[0].clientX;
   yDown = event.touches[0].clientY;
 }
@@ -89,3 +91,5 @@ directions.forEach(arrow => {
 function touchpad(direction: string) {
   if (touchpadEnabled) movePos(direction)
 }
+
+export { toggleTouchpad }

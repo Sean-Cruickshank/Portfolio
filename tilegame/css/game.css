@@ -1,0 +1,48 @@
+.grid {
+  position: relative;
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  max-height: 100%;
+}
+
+.game {
+  display: grid;
+  grid-template-columns: repeat(12, 8.33%);
+  gap: 0px;
+  width: min(min(95vh, 75%), 600px);
+  aspect-ratio: 1;
+}
+
+.plate {
+  aspect-ratio: 1;
+  padding: 0;
+  margin: 0;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+.player-icon, .key, .clock {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+.floor {
+  background-attachment: fixed;
+}
+
+@media (max-width: 450px) {
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-content: center;
+    height: 100vh;
+  }
+  
+  .game {
+    width: 90%;
+    margin-inline: auto;
+  }
+}

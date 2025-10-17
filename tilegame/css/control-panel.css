@@ -1,0 +1,177 @@
+.control-panel {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: min(25%, 200px);
+  padding: 5px 10px;
+  background-color: black;
+  text-align: center;
+  font-size: clamp(0.7rem, 0.1462rem + 2.4615vw, 1.5rem);
+}
+
+.boost {
+  position: absolute;
+  top: 50%;
+  transform: translate(0%, -50%);
+  margin: 0;
+  font-size: clamp(0.35rem, 0.35rem + 2vw, 1.5rem);
+  color: #73d673;
+  transition: 1s;
+}
+
+.boost-active {
+  opacity: 0;
+  transform: translateY(calc(-50% - 30px));
+}
+
+/* CONTROL PANEL TOP */
+
+.control-panel-top {
+  position: absolute;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 100%;
+  top: 5px;
+  left: 0;
+  align-items: center;
+  z-index: 1;
+}
+
+.about, .settings {
+  display: flex;
+  width: 100%;
+  height: min-content;
+}
+
+.about {
+  justify-content: left;
+}
+
+.about-button {
+  border-radius: 100%;
+  width: min-content;
+  aspect-ratio: 1;
+  padding-inline: 9px;
+  margin-left: 5px;
+}
+
+.settings {
+  justify-content: right;
+}
+
+.settings-button {
+  width: min-content;
+  aspect-ratio: 1;
+  padding-inline: 7px;
+  margin-right: 5px;
+}
+
+/* SCORES */
+
+.score-container {
+  position: relative;
+  width: 100%;
+  line-height: 50%;
+}
+
+.score-boost {
+  left: 75%;
+}
+
+/* REFRESH BUTTON */
+
+/* TIMER */
+
+.timer-container {
+  position: absolute;
+  width: 100%;
+  left: 0;
+  bottom: 15%;
+}
+
+.timer {
+  font-size: clamp(0.5rem, 0.5rem + 2vw, 2rem);
+}
+
+.timer-boost {
+  left: 65%;
+}
+
+/* START/STOP BUTTON */
+
+.start-game-button, .stop-game-button {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, -30%);
+  font-size: clamp(1rem, -0.0588rem + 2.9412vw, 2rem);
+}
+
+/* TOUCHPAD */
+
+.touch-controls {
+  position: relative;
+  width: 300px;
+  height: 250px;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.touch-controls button {
+  width: 100px;
+  aspect-ratio: 2;
+}
+
+.touch-left {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translate(0, -50%);
+}
+
+.touch-right {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translate(0, -50%);
+}
+
+.touch-up {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+
+.touch-down {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, 0%);
+}
+
+@media (max-width: 450px) {
+  .control-panel {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 0;
+    display: grid;
+    grid-template-columns: 1fr;
+    margin-inline: auto;
+    padding-bottom: 75px;
+    width: 90%;
+  }
+
+  .score-boost {
+    left: 60%
+  }
+
+  .timer-boost {
+    left: 55%;
+  }
+
+  .start-game-button, .stop-game-button, .customiser-button, .score-container, .high-score {
+    margin-inline: auto;
+  }
+}
