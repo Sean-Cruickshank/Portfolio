@@ -6,40 +6,10 @@ import { aboutData, popupData } from "./data";
 
 let aboutPage = 0
 
-export function generateEndMessage() {
-  const endMessageElement = document.querySelector('.end-message')
-  let endMessage = '';
-  if (score === highScore) {
-    endMessage = 'Well done, that\'s an impressive score!'
-  } else if (highScore - score < 3) {
-    endMessage = 'So close! You almost made it!'
-  } else if (highScore - score >= 3) {
-    endMessage = 'Better luck next time!'
-  }
-
-  if (endMessageElement) endMessageElement.innerHTML =
-    `
-      <div>
-        <h2>Game over!</h2>
-        <p class="end-message-message">${endMessage}</p>
-        <p
-          class="end-message-score"
-        >Your score: ${score}</p>
-        <p
-          class="end-message-score"
-        >High score: ${highScore}</p>
-        <button
-          class="tg-button"
-          onclick="document.querySelector('.end-message').classList.add('hidden')"
-        >Close</button>
-      </div>
-    `
-}
-
 const popupElement = document.querySelector('.popup-generic')
 const contentElement = document.querySelector('.popup-content')
 
-function generatePopup(mode: string) {
+export function generatePopup(mode: string) {
   popupElement?.classList.remove('hidden')
   const data = popupData.find(popup => popup.mode === mode)
   if (contentElement && data) contentElement.innerHTML = `
@@ -48,6 +18,21 @@ function generatePopup(mode: string) {
   `
   toggleButtons(mode, 'disable')
   contentElement?.querySelector('.popup-close')?.addEventListener('click', () => closePopup(mode))
+
+  if (mode === 'end-message') {
+    let endMessage = '';
+    if (score === highScore) endMessage = "Well done, that's an impressive score!"
+    else if (highScore - score < 3) endMessage = 'So close! You almost made it!'
+    else endMessage = 'Good try!'
+
+    const endText = contentElement?.querySelector('.end-message-message')
+    const endScore = contentElement?.querySelector('.end-message-score')
+    const endHighscore = contentElement?.querySelector('.end-message-highscore')
+
+    if (endText) endText.innerHTML = endMessage
+    if (endScore) endScore.innerHTML = `Your score: ${score}`
+    if (endHighscore) endHighscore.innerHTML = `High score: ${highScore}`
+  }
 
   if (mode === 'customiser') {
     contentElement?.querySelector('.colour-select')?.addEventListener('input', () => selectElementOnInput())

@@ -1,6 +1,6 @@
 import { toggleButtons, rollOdds, boost, randomPos } from "./utils";
 import { changeColour, colourArray, selectedColour } from "./customiser";
-import { generateEndMessage } from "./popups";
+import { generatePopup } from "./popups";
 import { backgroundData } from "./data";
 
 type plate = {
@@ -20,13 +20,14 @@ let highScore = Number(localStorage.getItem('highscore')) || 0
 let gameActive = false;
 let timer = 300
 
-let clockSpawn = rollOdds(100);
+let clockSpawn = rollOdds(25);
 let clockTypes = [2, 3, 5]
 let clockType = clockTypes[Math.floor(Math.random() * clockTypes.length)]
 let clockActive = true
 
 const startGameButton = document.querySelector('.start-game-button');
 const stopGameButton = document.querySelector('.stop-game-button');
+const refreshButton = document.querySelector('.refresh-button')
 
 const endMessageElement = document.querySelector('.end-message')
 
@@ -35,7 +36,7 @@ export function setValues() {
   playerPos = randomPos();
   goalPos = randomPos();
   clockPos = randomPos();
-  clockSpawn = rollOdds(100)
+  clockSpawn = rollOdds(25)
   clockType = clockTypes[Math.floor(Math.random() * clockTypes.length)]
   clockActive = true
   plateArray = [];
@@ -143,28 +144,29 @@ function plateCreator(icon: string) {
 function playGame() {
   startGameButton?.classList.add('hidden');
   stopGameButton?.classList.remove('hidden');
+  refreshButton?.classList.remove('hidden')
   setValues();
   renderGrid();
   gameActive = true
+  toggleButtons('start-game', 'disable')
   const clock = setInterval(() => {
     if (timer > 0) {
       timer--;
       const timerElement = document.querySelector('.timer');
       if (timerElement) timerElement.innerHTML = `${(timer / 10).toFixed(1)}`
       endMessageElement?.classList.add('hidden')
-      toggleButtons('start-game', 'disable')
     } else {
       if (score > highScore) {
         highScore = score;
         localStorage.setItem('highscore', String(highScore))
         renderScores()
       }
-      // setColourSelect()
-      toggleButtons('start-game', 'enable')
+      // toggleButtons('start-game', 'enable')
       startGameButton?.classList.remove('hidden');
       stopGameButton?.classList.add('hidden');
+      refreshButton?.classList.add('hidden')
       endMessageElement?.classList.remove('hidden')
-      generateEndMessage()
+      generatePopup('end-message')
       score = 0
       gameActive = false
       clearInterval(clock)
@@ -190,13 +192,11 @@ export function resetHighScore() {
     changeColour('#3F48CC')
   }
   renderScores()
-  // setColourSelect()
 }
 
 startGameButton?.addEventListener('click', () => playGame())
 stopGameButton?.addEventListener('click', () => timer = 1)
 
-// setColourSelect()
 setValues();
 renderGrid();
 

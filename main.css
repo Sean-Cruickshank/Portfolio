@@ -242,6 +242,11 @@ p {
   font-style: italic;
   font-weight: 900;
 }
+.about__hook {
+  font-size: 2rem;
+  font-style: italic;
+  font-weight: 900;
+}
 .about__intro {
   font-size: 1.4rem;
   font-style: italic;

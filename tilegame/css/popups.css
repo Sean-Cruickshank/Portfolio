@@ -5,7 +5,7 @@
   width: 50%;
   margin: 0;
   max-width: 500px;
-  max-height: 60vh;
+  max-height: 80vh;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -27,14 +27,14 @@
   font-size: clamp(0.6rem, -0.0353rem + 1.7647vw, 1.2rem);
 }
 
-.end-message h2 {
+.end-message-title {
   font-size: clamp(1.2rem, 0.3529rem + 2.3529vw, 2rem);
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
   font-weight: 400;
   border-bottom: none;
 }
 
-.end-message-score {
+.end-message-score, .end-message-highscore {
   font-size: clamp(0.8rem, 0.3765rem + 1.1765vw, 1.2rem);
 }
 
@@ -43,23 +43,6 @@
 .colour-input {
   display: none;
 }
-
-.customiser-button {
-  width: min(50px, 25%);
-  aspect-ratio: 1;
-  padding: 0;
-  margin-top: 5px;
-  margin-inline: auto;
-  cursor: pointer;
-  transition: 0.2s;
-  border: none;
-  z-index: 2;
-}
-
-  .customiser-button:hover {
-    box-shadow: 0 0 15px white;
-    transform: scale(0.95);
-  }
 
 .customiser-option {
   display: flex;
@@ -135,8 +118,21 @@
 
 /* SETTINGS */
 
-.reset-score-button {
-  font-size: clamp(0.6rem, 0.3923rem + 0.9231vw, 0.9rem);
+.settings-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+}
+
+.settings-buttons {
+  margin: 10px auto !important
+}
+
+@media (max-width: 848px) {
+  .settings-buttons {
+    width: calc(40% + 40px) !important;
+  }
 }
 
 @media (max-width: 450px) {

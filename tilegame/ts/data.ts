@@ -58,17 +58,34 @@ export const aboutData = [
   `,
   `
     <p>Each level is randomly generated, so you may sometimes encounter a level where the key is inaccessible</p>
-    <p>Reset the board at any time by hitting the 'Enter' key or by pressing the reset button!</p>
+    <p>Reset the board at any time by hitting the 'Enter' key or by pressing the refresh button!</p>
+    <button class="dummy-refresh-button"><i class="fa fa-refresh" aria-hidden="true"></i></button>
   `
 ]
 
 export const popupData = [
   {
+    mode: 'end-message',
+    content: `
+      <div>
+        <h2 class="end-message-title">Game over!</h2>
+        <p class="end-message-message">endMessage</p>
+        <p
+          class="end-message-score"
+        >Your score: 0</p>
+        <p
+          class="end-message-highscore"
+        >High score: 0</p>
+      </div>
+    `
+  }, {
     mode: 'settings',
     content: `
-      <h2>Settings</h2>
-      <button class="reset-score-button">Reset Highscore</button>
-      <button class="toggle-touchpad-button">Toggle Touchpad</button>
+      <div class="settings-section">
+        <h2>Settings</h2>
+        <button class="reset-score-button settings-buttons">Reset Highscore</button>
+        <button class="toggle-touchpad-button settings-buttons">Toggle Touchpad</button>
+      </div>
     `
   }, {
     mode: 'about',

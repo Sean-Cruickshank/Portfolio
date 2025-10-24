@@ -1,7 +1,0 @@
-- Fix touchpad on portrait mobile resolution
-- Fix styling for settings popup
-- Add styling and functionality for refresh button
-- Add refresh button to about popup
-- Take new screenshots for portfolio
-- Change timer spawn chance back to 1 in 4
-- Delete todo.md

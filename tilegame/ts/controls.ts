@@ -25,12 +25,18 @@ function movePos(direction: string) {
   }
 }
 
+function refreshTiles() {
+  setValues();
+  renderGrid();
+}
+
+document.querySelector('.refresh-button')?.addEventListener('click', () => refreshTiles())
+
 addEventListener('keydown', (input) => {
   if (gameActive) {
     movePos(input.key);
     if (input.key === 'Enter') {
-      setValues();
-      renderGrid();
+      refreshTiles()
     }
   }
 })

@@ -1,6 +1,6 @@
 type Project = {
   title: string,
-  link: string,
+  link: string | null,
   date: string,
   gallery: Image[],
   tags: Tag[],
@@ -18,42 +18,42 @@ type Tag = {
 }
 
 const projectData: Project[] = [
-  {
-    title: "AI Building Memory Project",
-    link: "/",
-    date: "2025",
-    gallery: [
+  // {
+  //   title: "AI Building Memory Project",
+  //   link: null,
+  //   date: "2025",
+  //   gallery: [
 
-    ],
-    tags: [
-      {title: 'Tailwind', class: 'devicon-tailwindcss-original'},
-      {title: 'TypeScript', class: 'devicon-typescript-plain'},
-      {title: 'Next.JS', class: 'devicon-nextjs-original-wordmark'},
-      {title: 'Python', class: 'devicon-python-plain'},
-      {title: 'SQL', class: "devicon-azuresqldatabase-plain"},
-    ],
-    description: [
-      "An AI-powered chatbot and information retrieval system built for the construction sector",
-      "Created over the course of 3 months as part of an AI Accelerator program",
-      "Utilises LLMs, custom system prompts, and RAG embedding to reliably retrieve information from a database"
-    ]
-  },
-  {
-    title: "Country Quiz",
-    link: "/",
-    date: "2025",
-    gallery: [
+  //   ],
+  //   tags: [
+  //     {title: 'Tailwind', class: 'devicon-tailwindcss-original'},
+  //     {title: 'TypeScript', class: 'devicon-typescript-plain'},
+  //     {title: 'Next.JS', class: 'devicon-nextjs-original-wordmark'},
+  //     {title: 'Python', class: 'devicon-python-plain'},
+  //     {title: 'PostgreSQL', class: "devicon-postgresql-plain"},
+  //   ],
+  //   description: [
+  //     "An AI-powered chatbot and information retrieval system built for the construction sector",
+  //     "Created over the course of 3 months as part of an AI Accelerator program",
+  //     "Utilises LLMs, custom system prompts, and RAG embedding to reliably retrieve information from a database"
+  //   ]
+  // },
+  // {
+  //   title: "Country Quiz",
+  //   link: "/",
+  //   date: "2025",
+  //   gallery: [
 
-    ],
-    tags: [
-      {title: 'SASS', class: 'devicon-sass-original'},
-      {title: 'TypeScript', class: 'devicon-typescript-plain'},
-      {title: 'React', class: 'devicon-react-original'},
-    ],
-    description: [
-      "A small tile-based game created in JavaScript in under 24 hours. Collect keys to get as many points as you can in under 30 seconds. I didn't really make this one to showcase a skill I just thought it was fun."
-    ]
-  },
+  //   ],
+  //   tags: [
+  //     {title: 'SASS', class: 'devicon-sass-original'},
+  //     {title: 'TypeScript', class: 'devicon-typescript-plain'},
+  //     {title: 'React', class: 'devicon-react-original'},
+  //   ],
+  //   description: [
+  //     "A small tile-based game created in JavaScript in under 24 hours. Collect keys to get as many points as you can in under 30 seconds. I didn't really make this one to showcase a skill I just thought it was fun."
+  //   ]
+  // },
   {
     title: "Tile Game",
     link: "/tilegame/index.html", // for localhost
@@ -70,7 +70,8 @@ const projectData: Project[] = [
       {title: 'React', class: 'devicon-react-original'},
     ],
     description: [
-      "A small tile-based game created in JavaScript in under 24 hours. Collect keys to get as many points as you can in under 30 seconds",
+      "A small tile-based game created in JavaScript. Collect keys to get as many points as you can before the timer runs out",
+      "Originally created in under 24 hours as a fun challenge for myself, but I've since come back to it a few times to make tweaks and improvements",
       "I didn't really make this one to showcase a skill I just thought it was fun"
     ]
   },
@@ -124,11 +125,11 @@ projectData.forEach(project => {
     <div class="projects__info">
       <div class="projects__title">
         <h3>${project.title}</h3>
-        <a
+        ${project.link ? `<a
           title=${project.link}
           target="_blank"
           href=${project.link} class="projects__link fa-solid fa-link"
-        ></a>
+        ></a>` : ''}
       </div>
       <i class="paragraph projects__date">${project.date}</i>
       <div class="projects__paragraphs">${paragraphs}</div>

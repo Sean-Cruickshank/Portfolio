@@ -2,8 +2,7 @@ export function toggleButtons(activator: string, condition: 'enable' | 'disable'
 
     const buttonsList = ['start-game', 'customiser', 'about', 'settings']
     let index = buttonsList.indexOf(activator)
-    index > -1 ? buttonsList.splice(index, 1) : console.warn('Invalid activator for toggleButtons')
-
+    index > -1 && buttonsList.splice(index, 1)
     buttonsList.forEach(page => {
         const button = document.querySelector(`.${page}-button`) as HTMLButtonElement;
         if (condition === 'enable') {

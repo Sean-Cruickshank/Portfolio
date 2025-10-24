@@ -7,9 +7,10 @@ const data = [
   {
     title: 'styling',
     description: [
-      'I think I do pretty good at styling to be honest'
+      'I have spent a lot of time styling with CSS and feel confident with the common extensions and frameworks',
+      'I typically aim for a mobile-first approach and strive to create applications that are dynamic and responsive'
     ],
-    render: { flag: false, breakpoint: 300 },
+    render: { flag: false, breakpoint: 1000 },
     array: [
       { name: "HTML", icon: "devicon-html5-plain-wordmark"},
       { name: "CSS", icon: "devicon-css3-plain-wordmark"},
@@ -21,9 +22,11 @@ const data = [
   {
     title: 'javascript',
     description: [
-      "I try to use TypeScript by default now. Next.JS is pretty cool but I've only used it once"
+      "JavaScript is probably the language I am the most familiar with, though these days I tend to use TypeScript by default",
+      "I am also very familiar with React, and more recently have expanded into Next.JS which I enjoy too!",
+      "I hope to familiarise myself with more frameworks in the future, so hopefully this list will grow very soon!"
     ],
-    render: { flag: false, breakpoint: 600 },
+    render: { flag: false, breakpoint: 1400 },
     array: [
       { name: "JavaScript", icon: "devicon-javascript-plain"},
       { name: "TypeScript", icon: "devicon-typescript-plain"},
@@ -34,30 +37,33 @@ const data = [
   {
     title: 'misc',
     description: [
-      'Just some random other shit I know'
+      'I spent a lot of time working with C# and .NET during my degree, and I have plans to expand on this in the near future',
+      'I have spent a bit of time working with PostgreSQL databases, and generally have a pretty solid grasp on SQL syntax',
+      "I've gotten into Python more recently, and although I think I still have a lot to learn, I have had a lot of fun utilising it with different AI models"
     ],
-    render: { flag: false, breakpoint: 900 },
+    render: { flag: false, breakpoint: 1800 },
     array: [
-      { name: ".NET Core", icon: "devicon-dotnetcore-plain"},
-      { name: "SQL", icon: "devicon-azuresqldatabase-plain"},
-      { name: "Python", icon: "devicon-python-plain"},
+      { name: ".NET Core", icon: "devicon-dotnetcore-plain" },
+      { name: "SQL", icon: "devicon-azuresqldatabase-plain" },
+      { name: "Python", icon: "devicon-python-plain" },
+      { name: "FastAPI", icon: "devicon-fastapi-plain" },
     ]
   },
   {
     title: 'cloud',
     description: [
-      'Passed my Azure Fundamentals cert in March 2025.',
-      'I have only ever committed to dev one time accidentally'
+      'I completed my Azure Fundamentals certification in March 2025 and hope to delve deeper into the Azure pathway in the future',
+      'I have only ever committed to dev one time accidentally!'
     ],
-    render: { flag: false, breakpoint: 1200 },
+    render: { flag: false, breakpoint: 2200 },
     array: [
-      { name: "Azure", icon: "devicon-azure-plain"},
+      { name: "Azure Fundamentals", icon: "devicon-azure-plain"},
       { name: "Git", icon: "devicon-git-plain"},
     ]
   },
 ]
 
-// Creates the div for each category and populates it, inserts all divs into the top 'skills' div
+// Creates the div for each category and populates it, inserts all divs into the top-level 'skills' div
 let skillsHTML = ''
 data.forEach(category => {
   let descriptionHTML = ''
@@ -83,7 +89,7 @@ function handleUI(arr: skillArray[]) {
     arr.forEach(skill => {
         skillsListHTML+= `
             <div class="skills__icon hidden__fade">
-                <i class="${skill.icon}"></i>
+                <i title="${skill.name}" class="${skill.icon}"></i>
                 <p>${skill.name}</p>
             </div>
         `
@@ -94,6 +100,7 @@ function handleUI(arr: skillArray[]) {
 // Triggers each category to be rendered when the breakpoint is reached
 window.addEventListener('scroll', () => {
   const position = Math.floor(scrollY)
+  console.log(position)
   data.forEach(category => {
     if (position > category.render.breakpoint && !category.render.flag) {
       renderSkills(`.skills__${category.title}`)

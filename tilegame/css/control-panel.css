@@ -66,6 +66,23 @@
   margin-right: 5px;
 }
 
+.customiser-button {
+  width: min(50px, 25%);
+  aspect-ratio: 1;
+  padding: 0;
+  margin-top: 5px;
+  margin-inline: auto;
+  cursor: pointer;
+  transition: 0.2s;
+  border: none;
+  z-index: 2;
+}
+
+  .customiser-button:hover {
+    box-shadow: 0 0 15px white;
+    transform: scale(0.95);
+  }
+
 /* SCORES */
 
 .score-container {
@@ -79,6 +96,21 @@
 }
 
 /* REFRESH BUTTON */
+
+.refresh-button {
+  position: absolute;
+  left: 50%;
+  bottom: 35%;
+  transform: translateX(-50%);
+  width: 50px !important;
+  aspect-ratio: 1;
+}
+
+.dummy-refresh-button {
+  width: 50px !important;
+  aspect-ratio: 1;
+  margin-top: 0 !important;
+}
 
 /* TIMER */
 
@@ -173,5 +205,17 @@
 
   .start-game-button, .stop-game-button, .customiser-button, .score-container, .high-score {
     margin-inline: auto;
+  }
+
+  .refresh-button {
+    top: 5%;
+    z-index: 4;
+  }
+
+  .touch-controls {
+    position: absolute;
+    left: 50%;
+    top: 57.5%;
+    transform: translate(-50%, -50%);
   }
 }
