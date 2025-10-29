@@ -1,3 +1,5 @@
+@use '../base/utils' as u;
+
 html {
     background: #030020;
     background: linear-gradient(130deg, #04002e 0% 5%, #030020 100%);
@@ -24,10 +26,21 @@ html {
 }
 
 main {
-    width: 80%;
-    padding-inline: 30px;
+    width: 95%;
     margin-inline: auto;
     text-align: center;
+
+    @include u.breakpoint('medium') {
+        width: 90%;
+    }
+
+    @include u.breakpoint('large') {
+        width: 85%;
+    }
+
+    @include u.breakpoint('xlarge') {
+        width: 80%;
+    }
 }
 
 footer {

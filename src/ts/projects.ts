@@ -18,26 +18,27 @@ type Tag = {
 }
 
 const projectData: Project[] = [
-  // {
-  //   title: "AI Building Memory Project",
-  //   link: null,
-  //   date: "2025",
-  //   gallery: [
-
-  //   ],
-  //   tags: [
-  //     {title: 'Tailwind', class: 'devicon-tailwindcss-original'},
-  //     {title: 'TypeScript', class: 'devicon-typescript-plain'},
-  //     {title: 'Next.JS', class: 'devicon-nextjs-original-wordmark'},
-  //     {title: 'Python', class: 'devicon-python-plain'},
-  //     {title: 'PostgreSQL', class: "devicon-postgresql-plain"},
-  //   ],
-  //   description: [
-  //     "An AI-powered chatbot and information retrieval system built for the construction sector",
-  //     "Created over the course of 3 months as part of an AI Accelerator program",
-  //     "Utilises LLMs, custom system prompts, and RAG embedding to reliably retrieve information from a database"
-  //   ]
-  // },
+  {
+    title: "AI Building Memory Project",
+    link: null,
+    date: "2025",
+    gallery: [
+      {url: "images/gallery/southbase_B.png", orientation: 'square'},
+      {url: "images/gallery/southbase_A.png", orientation: 'square'},
+    ],
+    tags: [
+      {title: 'Tailwind', class: 'devicon-tailwindcss-original'},
+      {title: 'TypeScript', class: 'devicon-typescript-plain'},
+      {title: 'Next.JS', class: 'devicon-nextjs-original-wordmark'},
+      {title: 'Python', class: 'devicon-python-plain'},
+      {title: 'PostgreSQL', class: "devicon-postgresql-plain"},
+    ],
+    description: [
+      "An AI-powered chatbot and information retrieval system built for the construction sector",
+      "Designed, created, and iterated over the course of 3 months as part of an AI Accelerator program",
+      "Utilises LLMs, custom system prompts, and RAG embedding to reliably retrieve information from a database and cite sources used"
+    ]
+  },
   // {
   //   title: "Country Quiz",
   //   link: "/",

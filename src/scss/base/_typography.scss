@@ -15,7 +15,7 @@ h1, h2, h3, h4 {
 }
 
 h1 {
-    font-size: 6rem;
+    font-size: clamp(2.5rem, 0.8421rem + 7.3684vw, 6rem);
 }
 
 h2 {

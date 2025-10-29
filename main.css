@@ -24,10 +24,24 @@ html {
 }
 
 main {
-  width: 80%;
-  padding-inline: 30px;
+  width: 95%;
   margin-inline: auto;
   text-align: center;
+}
+@media (min-width: 48em) {
+  main {
+    width: 90%;
+  }
+}
+@media (min-width: 62em) {
+  main {
+    width: 85%;
+  }
+}
+@media (min-width: 75em) {
+  main {
+    width: 80%;
+  }
 }
 
 footer {
@@ -62,7 +76,7 @@ h1, h2, h3, h4 {
 }
 
 h1 {
-  font-size: 6rem;
+  font-size: clamp(2.5rem, 0.8421rem + 7.3684vw, 6rem);
 }
 
 h2 {
@@ -107,7 +121,7 @@ p {
 }
 .welcome__headers h2 {
   font-weight: 100;
-  font-size: 2rem;
+  font-size: clamp(1rem, 0.5263rem + 2.1053vw, 2rem);
   letter-spacing: 10px;
 }
 

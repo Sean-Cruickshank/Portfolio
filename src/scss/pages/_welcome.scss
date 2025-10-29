@@ -22,7 +22,7 @@
 
         & h2 {
             font-weight: 100;
-            font-size: 2rem;
+            font-size: clamp(1rem, 0.5263rem + 2.1053vw, 2rem);
             letter-spacing: 10px;
         }
     }
