@@ -3,13 +3,14 @@
 html {
     background: #030020;
     background: linear-gradient(130deg, #04002e 0% 5%, #030020 100%);
-    background-attachment: fixed;
+    // background-attachment: fixed;
     min-height: 100vh;
 }
 
 body {
     margin: 0;
     padding: 0;
+    overflow-x: hidden;
 }
 
 a, a:visited, a:active {

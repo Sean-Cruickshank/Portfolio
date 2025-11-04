@@ -24,7 +24,7 @@ const projectData: Project[] = [
     date: "2025",
     gallery: [
       {url: "images/gallery/southbase_B.png", orientation: 'square'},
-      {url: "images/gallery/southbase_A.png", orientation: 'square'},
+      {url: "images/gallery/southbase_A.png", orientation: 'landscape'},
     ],
     tags: [
       {title: 'Tailwind', class: 'devicon-tailwindcss-original'},
@@ -82,7 +82,7 @@ const projectData: Project[] = [
     date: "2023",
     gallery: [
       { url: "images/gallery/csp_standard.png", orientation: 'portrait'},
-      { url: "images/gallery/csp_wide.png", orientation: 'landscape'},
+      { url: "images/gallery/csp_sources.png", orientation: 'square'},
     ],
     tags: [
       {title: 'HTML', class: 'devicon-html5-plain-wordmark'},
@@ -102,6 +102,28 @@ let projectListHTML = ""
 let flip = false
 
 projectData.forEach(project => {
+  projectListHTML += `
+    <div class="projects__card">
+      ${flip
+        ? `${createProjectInfo(project, 'large')} ${createProjectGallery(project.gallery, 'right')}`
+        : `${createProjectGallery(project.gallery, 'left')} ${createProjectInfo(project, 'large')}`
+      }
+      ${createProjectInfo(project, 'small')}
+    </div>
+  `
+  flip = !flip
+})
+
+function createProjectGallery(array: Image[], position: string) {
+  return `
+    <div class="projects__gallery">
+      <img class="projects__image image__${position}__A image__${array[0].orientation}" src=${array[0].url} />
+      <img class="projects__image image__${position}__B image__${array[1].orientation}" src=${array[1].url} />
+    </div>
+  `
+}
+
+function createProjectInfo(project: Project, type: 'small' | 'large') {
   let projectListTags = ""
   let paragraphs = ""
   let tagCount = 0
@@ -121,9 +143,9 @@ projectData.forEach(project => {
       <p>${paragraph}</p>
     `
   })
-
-  let projectsInfo = `
-    <div class="projects__info">
+  
+  return `
+    <div class="projects__info projects__info__${type}">
       <div class="projects__title">
         <h3>${project.title}</h3>
         ${project.link ? `<a
@@ -137,26 +159,6 @@ projectData.forEach(project => {
       <div class="projects__icons">${projectListTags}</div>
     </div>
   `
-
-  projectListHTML += `
-    <div class="projects__card">
-      ${flip
-        ? `${createGallery(project.gallery, 'left')} ${projectsInfo}`
-        : `${projectsInfo} ${createGallery(project.gallery, 'right')}`
-      }
-    </div>
-  `
-  flip = !flip
-})
-
-function createGallery(array: Image[], position: string) {
-  let galleryHTML = ''
-  let count = 1
-  array.forEach(image => {
-    count <= 3 ? galleryHTML+= `<img class="projects__image image__${position}__${count} image__${image.orientation}" src=${image.url} />` : null
-    count++
-  })
-  return `<div class="projects__gallery">${galleryHTML}</div>`
 }
 
 const list = document.querySelector('.projects__list')
