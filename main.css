@@ -80,17 +80,18 @@ h1 {
 }
 
 h2 {
-  font-size: 3rem;
+  font-size: clamp(1.8rem, 0.5294rem + 3.5294vw, 3rem);
 }
 
 h3 {
-  font-size: 2rem;
+  font-size: clamp(1.4rem, 0.7647rem + 1.7647vw, 2rem);
 }
 
 p {
-  font-size: 1.25rem;
+  font-size: clamp(1rem, 0.7353rem + 0.7353vw, 1.25rem);
   font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
   font-weight: 100;
+  text-align: left;
 }
 
 :root {
@@ -125,21 +126,89 @@ p {
   letter-spacing: 10px;
 }
 
-.skills {
-  text-align: center;
-  border-radius: 20px;
-  padding: 5px;
+.skills__section {
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: stretch;
+  gap: 10px;
+}
+@media (min-width: 48em) {
+  .skills__section {
+    grid-template-columns: 1fr 6fr;
+  }
+}
+.skills__menu {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+@media (min-width: 48em) {
+  .skills__menu {
+    flex-direction: column;
+  }
+}
+.skills__menu__item {
+  width: 100%;
+  max-width: 100px;
+  aspect-ratio: 1;
+  background-color: purple;
+}
+@media (min-width: 48em) {
+  .skills__menu__item {
+    max-width: 999px;
+  }
+}
+.skills__menu__button {
+  width: 100%;
+  max-width: 100px;
+  aspect-ratio: 1;
+  border: none;
+  border-radius: 0;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+@media (min-width: 48em) {
+  .skills__menu__button {
+    max-width: 999px;
+  }
+}
+.skills__menu__button i {
+  font-size: clamp(2.5rem, -0.1471rem + 7.3529vw, 5rem);
+}
+.skills__menu__button p {
+  position: absolute;
+  margin: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 5%;
+  font-family: "Agency FB Thin", sans-serif;
+  text-transform: uppercase;
+  font-size: clamp(0.9rem, 0.2647rem + 1.7647vw, 1.5rem);
+}
+.skills__content {
+  position: relative;
+  background-color: green;
+  flex: 1;
+  padding: 10px;
+  padding-bottom: 150px;
 }
 .skills__list {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  margin: 50px 0px;
+  background-color: red;
 }
 .skills__icon {
-  padding: 10px 50px;
-  font-size: 4rem;
-  transition: 0.5s;
+  flex: 1;
+  font-size: clamp(2.5rem, 0.9118rem + 4.4118vw, 4rem);
+  padding: 10px 0;
 }
 
 .social {
@@ -377,30 +446,47 @@ p {
     transform: translateX(0%) !important;
   }
 }
+.projects__paragraphs {
+  width: 90%;
+}
 
 .about p {
   line-height: 200%;
 }
 .about b {
-  font-size: 1.4rem;
+  font-size: clamp(1.1rem, 0.7824rem + 0.8824vw, 1.4rem);
   font-style: italic;
   font-weight: 900;
 }
 .about__hook {
-  font-size: 2rem;
+  font-size: clamp(1.6rem, 1.1765rem + 1.1765vw, 2rem);
   font-style: italic;
   font-weight: 900;
 }
 .about__intro {
-  font-size: 1.4rem;
+  font-size: clamp(1.2rem, 0.9882rem + 0.5882vw, 1.4rem);
   font-style: italic;
   margin-bottom: 100px;
+  text-align: center !important;
 }
-.about__history {
-  width: 70%;
+.about__main {
+  width: 90%;
   margin-inline: auto;
 }
+@media (min-width: 48em) {
+  .about__main {
+    width: 80%;
+  }
+}
+@media (min-width: 62em) {
+  .about__main {
+    width: 70%;
+  }
+}
 
+.contact p {
+  text-align: center !important;
+}
 .contact__icons {
   display: flex;
   justify-content: center;
@@ -422,4 +508,5 @@ p {
 footer p {
   line-height: 100%;
   font-size: 0.8rem;
+  text-align: center !important;
 }/*# sourceMappingURL=main.css.map */

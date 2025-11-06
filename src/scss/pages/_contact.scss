@@ -1,4 +1,8 @@
 .contact {
+    & p {
+        text-align: center !important;
+    }
+
     &__icons {
         display: flex;
         justify-content: center;

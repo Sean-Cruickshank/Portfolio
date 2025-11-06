@@ -19,15 +19,16 @@ h1 {
 }
 
 h2 {
-    font-size: 3rem;
+    font-size: clamp(1.8rem, 0.5294rem + 3.5294vw, 3rem);
 }
 
 h3 {
-    font-size: 2rem;
+    font-size: clamp(1.4rem, 0.7647rem + 1.7647vw, 2rem);
 }
 
 p {
-    font-size: 1.25rem;
+    font-size: clamp(1rem, 0.7353rem + 0.7353vw, 1.25rem);
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-weight: 100;
+    text-align: left;
 }

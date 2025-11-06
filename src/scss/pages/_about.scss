@@ -1,3 +1,5 @@
+@use '../base/utils' as u;
+
 .about {
 
     & p {
@@ -5,25 +7,28 @@
     }
 
     & b {
-        font-size: 1.4rem;
+        font-size: clamp(1.1rem, 0.7824rem + 0.8824vw, 1.4rem);
         font-style: italic;
         font-weight: 900;
     }
 
     &__hook {
-        font-size: 2rem;
+        font-size: clamp(1.6rem, 1.1765rem + 1.1765vw, 2rem);
         font-style: italic;
         font-weight: 900;
     }
 
     &__intro {
-        font-size: 1.4rem;
+        font-size: clamp(1.2rem, 0.9882rem + 0.5882vw, 1.4rem);
         font-style: italic;
         margin-bottom: 100px;
+        text-align: center !important;
     }
 
-    &__history {
-        width: 70%;
+    &__main {
+        width: 90%;
         margin-inline: auto;
+        @include u.breakpoint('medium') { width: 80%; }
+        @include u.breakpoint('large') { width: 70%; }
     }
 }
