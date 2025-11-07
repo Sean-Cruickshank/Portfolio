@@ -34,31 +34,35 @@ const projectData: Project[] = [
       {title: 'PostgreSQL', class: "devicon-postgresql-plain"},
     ],
     description: [
-      "An AI-powered chatbot and information retrieval system built for the construction sector",
-      "Designed, created, and iterated over the course of 3 months as part of an AI Accelerator program",
+      "An AI-powered chatbot and information retrieval system tailored to the construction industry on behalf of Preformance/Southbase",
+      "Designed, created, and iterated over the course of 3 months as part of an AI Accelerator program through Seen Ventures",
       "Utilises LLMs, custom system prompts, and RAG embedding to reliably retrieve information from a database and cite sources used"
     ]
   },
-  // {
-  //   title: "Country Quiz",
-  //   link: "/",
-  //   date: "2025",
-  //   gallery: [
-
-  //   ],
-  //   tags: [
-  //     {title: 'SASS', class: 'devicon-sass-original'},
-  //     {title: 'TypeScript', class: 'devicon-typescript-plain'},
-  //     {title: 'React', class: 'devicon-react-original'},
-  //   ],
-  //   description: [
-  //     "A small tile-based game created in JavaScript in under 24 hours. Collect keys to get as many points as you can in under 30 seconds. I didn't really make this one to showcase a skill I just thought it was fun."
-  //   ]
-  // },
+  {
+    title: "Country Quiz",
+    link: "/",
+    date: "2025",
+    gallery: [
+      {url: "images/gallery/level_one.png", orientation: 'square'},
+      {url: "images/gallery/level_five.png", orientation: 'square'},
+    ],
+    tags: [
+      {title: 'HTML', class: 'devicon-html5-plain-wordmark'},
+      {title: 'CSS', class: 'devicon-css3-plain-wordmark'},
+      {title: 'SASS', class: 'devicon-sass-original'},
+      {title: 'TypeScript', class: 'devicon-typescript-plain'},
+      {title: 'React', class: 'devicon-react-original'},
+    ],
+    description: [
+      "Pulls data from an API to randomly generate questions about the size and population of different countries",
+      "Includes player statistics and a match history so players can see themselves improve their geography knowledge!"
+    ]
+  },
   {
     title: "Tile Game",
-    link: "/tilegame/index.html", // for localhost
-    // link: "/tilegame", // for deployment
+    // link: "/tilegame/index.html", // for localhost
+    link: "/tilegame", // for deployment
     date: "2024",
     gallery: [
       {url: "images/gallery/level_one.png", orientation: 'square'},

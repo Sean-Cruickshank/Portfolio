@@ -20,6 +20,9 @@ h1 {
 
 h2 {
     font-size: clamp(1.8rem, 0.5294rem + 3.5294vw, 3rem);
+    border-bottom: 2px solid var(--textAlt);
+    width: max-content;
+    margin-inline: auto;
 }
 
 h3 {

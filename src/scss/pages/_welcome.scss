@@ -13,7 +13,7 @@
 
         & h1 {
             letter-spacing: 10px;
-            background: -webkit-linear-gradient(var(--gradientA), var(--gradientB) 100%);
+            background: -webkit-linear-gradient(var(--text), var(--textAlt) 100%);
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -24,6 +24,7 @@
             font-weight: 100;
             font-size: clamp(1rem, 0.5263rem + 2.1053vw, 2rem);
             letter-spacing: 10px;
+            border: none;
         }
     }
 }

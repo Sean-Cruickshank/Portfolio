@@ -41,7 +41,12 @@
 
         & h3 {
             margin: 5px 0;
+            color: var(--text)
         }
+    }
+
+    &__date {
+        color: var(--textAlt)
     }
 
     &__icons {
@@ -49,6 +54,8 @@
         width: 100%;
         display: flex;
         justify-content: center;
+
+        @include u.breakpoint('medium') { justify-content: space-around; }
     }
 
     &__icon {
@@ -99,7 +106,6 @@
 
         & .image__landscape {
             width: min(350px, 75%);
-            // width: 300px;
             @include u.breakpoint('medium') { width: 450px; }
             @include u.breakpoint('large') { width: 350px; }
             @include u.breakpoint('xlarge') { width: 450px; }
@@ -107,7 +113,6 @@
 
         & .image__square {
             width: min(300px, 60%);
-            // width: 225px;
             @include u.breakpoint('medium') { width: 375px; }
             @include u.breakpoint('large') { width: 300px; }
             @include u.breakpoint('xlarge') { width: 375px; }
@@ -115,7 +120,6 @@
 
         & .image__portrait {
             width: min(250px, 55%);
-            // width: 200px;
             @include u.breakpoint('medium') { width: 300px; }
             @include u.breakpoint('large') { width: 250px; }
             @include u.breakpoint('xlarge') { width: 300px; }
@@ -127,7 +131,7 @@
     &__image {
         position: absolute;
         border-radius: 10px;
-        border: solid 1px var(--text);
+        border: solid 1px var(--textAlt);
 
         @include u.breakpoint('large') {
             transform: translateX(0%) !important;

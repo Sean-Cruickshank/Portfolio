@@ -1,9 +1,9 @@
 @use '../base/utils' as u;
 
 html {
-    background: #030020;
-    background: linear-gradient(130deg, #04002e 0% 5%, #030020 100%);
-    // background-attachment: fixed;
+    background: var(--backgroundB);
+    background: linear-gradient(130deg, var(--backgroundA) 0% 5%, var(--backgroundB) 100%);
+    background-attachment: fixed;
     min-height: 100vh;
 }
 
@@ -42,6 +42,10 @@ main {
     @include u.breakpoint('xlarge') {
         width: 80%;
     }
+}
+
+.section {
+    margin-bottom: 200px;
 }
 
 footer {
