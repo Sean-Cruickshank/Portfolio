@@ -1,2 +1,1 @@
 - Tile Game link not working on deployment
-- Skills tab button icons not centered on mobile
