@@ -49,6 +49,10 @@
                 opacity: 0.9;
             }
 
+            &:active {
+                transform: scale(0.90);
+            }
+
             @include u.breakpoint('medium') {
                 max-width: 999px;
             }
@@ -98,6 +102,6 @@
         padding: 10px 0;
         display: flex;
         justify-content: center;
-        color: var(--text)
+        color: var(--text); 
     }
 }

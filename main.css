@@ -187,6 +187,9 @@ p {
   transform: scale(0.95);
   opacity: 0.9;
 }
+.skills__menu__button:active {
+  transform: scale(0.9);
+}
 @media (min-width: 48em) {
   .skills__menu__button {
     max-width: 999px;
@@ -290,6 +293,7 @@ p {
 .social a:hover, .to-top i:hover {
   transform: scale(0.9);
   opacity: 1;
+  color: var(--textAlt);
 }
 
 .projects__card {
@@ -331,6 +335,9 @@ p {
   top: 50%;
   transform: translateY(-50%);
   color: var(--text);
+}
+.projects__title a:hover {
+  color: var(--textAlt);
 }
 .projects__title h3 {
   margin: 5px 0;
@@ -546,6 +553,7 @@ p {
 .contact__icons a:hover {
   transform: scale(0.9);
   opacity: 0.9;
+  color: var(--textAlt);
 }
 
 footer p {
