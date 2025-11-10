@@ -37,7 +37,6 @@
             border-radius: 0;
             position: relative;
             display: flex;
-            justify-content: center;
             flex-direction: column;
             padding: 10px;
             cursor: pointer;
@@ -61,6 +60,7 @@
             & i {
                 font-size: clamp(2.5rem, -0.1471rem + 7.3529vw, 5rem);
                 background-color: red;
+                margin: 0;
             }
 
             & p {
