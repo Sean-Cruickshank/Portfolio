@@ -1,11 +1,16 @@
+@use '../base/utils' as u;
+
 html {
-    background: #030020;
+    background: var(--backgroundB);
+    background: linear-gradient(130deg, var(--backgroundA) 0% 5%, var(--backgroundB) 100%);
+    background-attachment: fixed;
     min-height: 100vh;
 }
 
 body {
     margin: 0;
     padding: 0;
+    overflow-x: hidden;
 }
 
 a, a:visited, a:active {
@@ -19,4 +24,44 @@ html {
 
 *, *::before, *::after {
     box-sizing: inherit;
+}
+
+main {
+    width: 95%;
+    margin-inline: auto;
+    text-align: center;
+
+    @include u.breakpoint('medium') {
+        width: 90%;
+    }
+
+    @include u.breakpoint('large') {
+        width: 85%;
+    }
+
+    @include u.breakpoint('xlarge') {
+        width: 80%;
+    }
+}
+
+.section {
+    margin-bottom: 200px;
+}
+
+footer {
+    display: flex;
+    flex-direction: column;
+    line-height: 200%;
+    margin-top: 300px;
+    margin-bottom: 10px;
+}
+
+.hidden {
+    opacity: 0 !important;
+    pointer-events: none !important;
+
+    &__fade {
+        @extend .hidden;
+        transform: translateY(40px)
+    }
 }

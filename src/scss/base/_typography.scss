@@ -1,11 +1,37 @@
+@font-face {
+    font-family: 'Agency FB Thin';
+    src: url(/src/fonts/AgencyFB-Bold.ttf) format('truetype');
+}
+
 html {
     color: var(--text);
 }
 
-.headers h1 {
-    font-size: 6rem;
+h1, h2, h3, h4 {
+    font-family: 'Agency FB Thin', sans-serif;
+    text-transform: uppercase;
+    font-weight: 100;
+    letter-spacing: 5px;
 }
 
-.headers h2 {
-    font-size: 3rem;
+h1 {
+    font-size: clamp(2.5rem, 0.8421rem + 7.3684vw, 6rem);
+}
+
+h2 {
+    font-size: clamp(1.8rem, 0.5294rem + 3.5294vw, 3rem);
+    border-bottom: 2px solid var(--textAlt);
+    width: max-content;
+    margin-inline: auto;
+}
+
+h3 {
+    font-size: clamp(1.4rem, 0.7647rem + 1.7647vw, 2rem);
+}
+
+p {
+    font-size: clamp(1rem, 0.7353rem + 0.7353vw, 1.25rem);
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-weight: 100;
+    text-align: left;
 }

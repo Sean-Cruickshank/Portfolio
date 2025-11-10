@@ -1,0 +1,25 @@
+.contact {
+    & p {
+        text-align: center !important;
+    }
+
+    &__icons {
+        display: flex;
+        justify-content: center;
+        margin-top: 100px;
+
+        & a {
+            font-size: clamp(2.5rem, -0.1471rem + 7.3529vw, 5rem);
+            color: var(--text);
+            transition: 0.3s;
+            cursor: pointer;
+            margin: 0 50px;
+
+            &:hover {
+                transform: scale(0.9);
+                opacity: 0.9;
+                color: var(--textAlt)
+            }
+        }
+    }
+}

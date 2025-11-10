@@ -1,21 +1,30 @@
-.social {
-    position: absolute;
-    top: 30px;
-    right: 30px;
-    display: grid;
-    grid-template-columns: 1fr;
+.welcome {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 90vh;
+    margin-bottom: 10vh;
 
-    &__icon {
-        font-size: 3rem;
-        margin-bottom: 30px;
-        color: var(--text);
+    &__headers {
+        text-align: center;
+        transition: 3s;
+
+
+        & h1 {
+            letter-spacing: 10px;
+            background: -webkit-linear-gradient(var(--text), var(--textAlt) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0;
+        }
+
+        & h2 {
+            font-weight: 100;
+            font-size: clamp(1rem, 0.5263rem + 2.1053vw, 2rem);
+            letter-spacing: 10px;
+            border: none;
+        }
     }
-}
-
-.headers {
-    width: 60%;
-    text-align: center;
-    line-height: 75%;
-    padding-top: 60px;
-    padding-left: 40px;
 }

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sean Cruickshank - Tile Game</title>
+  <link rel="icon" href="/images/favicon.ico"/>
+  <link rel="stylesheet" href="./css/index.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+</head>
+<body>
+  <div class="grid">
+    <div class="game">
+  
+    </div>
+    
+    <div class="control-panel">
+      <div class="control-panel-top">
+        <div class="about">
+          <button class="about-button">?</button>
+        </div>
+        <div class="settings">
+          <button class="settings-button"><i class="fa-solid fa-gear"></i></button>
+        </div>
+      </div>
+
+      <button class="customiser-button"></button>
+
+      <div class="score-container">
+        <p class="score">0</p>
+        <p class="boost score-boost"></p>
+      </div>
+      <p class="high-score">0</p>
+      
+      <button
+        class="refresh-button hidden">
+          <i class="fa fa-refresh" aria-hidden="true"></i>
+      </button>
+
+      <div class="timer-container">
+        <p class="timer">30.0</p>
+        <p class="boost timer-boost"></p>
+      </div>
+
+      <button class="start-game-button">Start</button>
+      <button class="stop-game-button hidden">Stop</button>
+    </div>
+
+    <div class="touch-controls hidden">
+      <button class="touch-left ArrowLeft"><i class="fa-solid fa-arrow-left"></i></button>
+      <button class="touch-right ArrowRight"><i class="fa-solid fa-arrow-right"></i></button>
+      <button class="touch-up ArrowUp"><i class="fa-solid fa-arrow-up"></i></button>
+      <button class="touch-down ArrowDown"><i class="fa-solid fa-arrow-down"></i></button>
+    </div>
+
+    <div class="popup popup-generic hidden">
+      <div class="popup-content"></div>
+    </div>
+  </div>
+
+  <script type="module" src="ts/index.ts"></script>
+</body>
+</html>
