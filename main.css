@@ -176,6 +176,7 @@ p {
   border-radius: 0;
   position: relative;
   display: flex;
+  justify-content: center;
   flex-direction: column;
   padding: 10px;
   cursor: pointer;
@@ -197,8 +198,6 @@ p {
 }
 .skills__menu__button i {
   font-size: clamp(2.5rem, -0.1471rem + 7.3529vw, 5rem);
-  text-align: center;
-  margin-inline: auto;
   background-color: red;
 }
 .skills__menu__button p {
