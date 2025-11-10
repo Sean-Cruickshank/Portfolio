@@ -39,7 +39,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding: 0px;
+            padding: 10px;
             cursor: pointer;
             color: var(--backgroundA);
             background-color: var(--textAlt);
@@ -60,7 +60,6 @@
 
             & i {
                 font-size: clamp(2.5rem, -0.1471rem + 7.3529vw, 5rem);
-                background-color: red;
                 margin: 0;
             }
 

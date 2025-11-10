@@ -178,7 +178,7 @@ p {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 0px;
+  padding: 10px;
   cursor: pointer;
   color: var(--backgroundA);
   background-color: var(--textAlt);
@@ -198,7 +198,6 @@ p {
 }
 .skills__menu__button i {
   font-size: clamp(2.5rem, -0.1471rem + 7.3529vw, 5rem);
-  background-color: red;
   margin: 0;
 }
 .skills__menu__button p {
