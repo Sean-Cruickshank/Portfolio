@@ -43,7 +43,6 @@
             color: var(--backgroundA);
             background-color: var(--textAlt);
             transition: 0.25s;
-            text-align: center;
 
             &:hover {
                 transform: scale(0.95);
@@ -60,6 +59,7 @@
 
             & i {
                 font-size: clamp(2.5rem, -0.1471rem + 7.3529vw, 5rem);
+                text-align: center;
             }
 
             & p {
