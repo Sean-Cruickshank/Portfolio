@@ -1,1 +1,2 @@
-- Tile Game link not working on deployment
+- Fix horizontal line issue in Tile Game
+- Fix mobile size issues in Tile Game
