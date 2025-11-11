@@ -34,11 +34,7 @@
 }
 
 @media (max-width: 450px) {
-  html {
-    max-width: 100vw;
-    max-height: 100vh;
-    overflow: hidden;
-  }
+
   
   .grid {
     display: grid;
@@ -50,6 +46,7 @@
   .game {
     width: 90%;
     max-width: 100vw;
+    max-height: 100vh;
     margin-inline: auto;
   }
 }
