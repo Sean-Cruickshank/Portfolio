@@ -67,22 +67,27 @@ export function setValues() {
 }
 
 export function renderGrid() {
-  let gameElementHTML = '';
+  let gridElementHTML = '';
   plateArray.forEach((plate) => {
     if (plate.grey) {
-      gameElementHTML += plateCreator('wall')
+      gridElementHTML += plateCreator('wall')
     } else if (plate.x === playerPos.x && plate.y === playerPos.y) {
-      gameElementHTML += plateCreator('player')
+      gridElementHTML += plateCreator('player')
     } else if (plate.x === goalPos.x && plate.y === goalPos.y) {
-      gameElementHTML += plateCreator('key')
+      gridElementHTML += plateCreator('key')
     } else if ((plate.x === clockPos.x && plate.y === clockPos.y) && clockSpawn && clockActive) {
-      gameElementHTML += plateCreator('clock')
+      gridElementHTML += plateCreator('clock')
     } else {
-      gameElementHTML += plateCreator('floor')
+      gridElementHTML += plateCreator('floor')
     }
   })
-  const gameElement = document.querySelector('.game')
-  if (gameElement) gameElement.innerHTML = gameElementHTML;
+  const gridElement = document.querySelector('.supergrid')
+  const level = Math.min(Math.floor(score / 5) + 1, 5)
+  if (gridElement) gridElement.innerHTML = `
+    <div class="grid" style="${backgroundData[level - 1].floor};">
+      ${gridElementHTML}
+    </div>
+  `
   renderScores()
 
   if (playerPos.x === goalPos.x && playerPos.y === goalPos.y) {
@@ -100,7 +105,7 @@ export function renderGrid() {
 }
 
 function plateCreator(icon: string) {
-  if (icon === 'floor' || icon === 'wall') {
+  if (icon === 'wall') {
     const level = Math.min(Math.floor(score / 5) + 1, 5)
     return `
     <div

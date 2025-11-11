@@ -1,4 +1,4 @@
-.grid {
+.game {
   position: relative;
   display: flex;
   gap: 10px;
@@ -6,12 +6,18 @@
   max-height: 100%;
 }
 
-.game {
+.supergrid {
+  width: min(min(95vh, 75%), 600px);
+  height: min-content;
+  margin: 0;
+  padding: 0;
+}
+
+.grid {
   display: grid;
   grid-template-columns: repeat(12, 8.333%);
   gap: 0px;
-  width: min(min(95vh, 75%), 600px);
-  height: min-content;
+  width: 100%;
 }
 
 .plate {
@@ -34,16 +40,15 @@
 }
 
 @media (max-width: 450px) {
-
   
-  .grid {
+  .game {
     display: grid;
     grid-template-columns: 1fr;
     justify-content: center;
     height: 98vh;
   }
   
-  .game {
+  .supergrid {
     width: 90%;
     max-width: 100vw;
     max-height: 100vh;
