@@ -185,14 +185,19 @@
 @media (max-width: 450px) {
   .control-panel {
     position: absolute;
+    top: calc(90vw + 10px);
     left: 50%;
     transform: translateX(-50%);
-    bottom: 0;
     display: grid;
     grid-template-columns: 1fr;
     margin-inline: auto;
     padding-bottom: 75px;
     width: 90%;
+  }
+
+  .control-panel-tc {
+    top: auto !important;
+    bottom: 0 !important;
   }
 
   .score-boost {

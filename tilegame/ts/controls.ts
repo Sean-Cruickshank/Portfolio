@@ -44,15 +44,18 @@ addEventListener('keydown', (input) => {
 let touchpadEnabled = false
 
 function toggleTouchpad() {
+  const controlPanel = document.querySelector('.control-panel')
   const touchControls = document.querySelector('.touch-controls')
   const toggleTouchpadButton = document.querySelector('.toggle-touchpad-button')
   
   toggleTouchpadButton?.addEventListener('click', () => {
     if (touchpadEnabled) {
       touchpadEnabled = false
+      controlPanel?.classList.remove('control-panel-tc')
       touchControls?.classList.add('hidden')
     } else {
       touchpadEnabled = true
+      controlPanel?.classList.add('control-panel-tc')
       touchControls?.classList.remove('hidden')
     }
   })

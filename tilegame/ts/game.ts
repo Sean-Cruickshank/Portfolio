@@ -18,8 +18,7 @@ let score = 0
 let highScore = Number(localStorage.getItem('highscore')) || 0
 
 let gameActive = false;
-// let timer = 300
-let timer = 99999
+let timer = 300
 
 let clockSpawn = rollOdds(25);
 let clockTypes = [2, 3, 5]
@@ -184,8 +183,7 @@ function playGame() {
       score = 0
       gameActive = false
       clearInterval(clock)
-      // timer = 300;
-      timer = 99999
+      timer = 300
     }
   }, 100)
 }
