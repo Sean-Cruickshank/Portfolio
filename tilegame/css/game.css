@@ -48,6 +48,11 @@
     grid-template-columns: 1fr;
     justify-content: center;
     height: 98vh;
+    overflow-y: hidden;
+  }
+
+  .game-tc {
+    overflow-y: auto !important;
   }
   
   .grid {

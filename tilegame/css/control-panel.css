@@ -143,14 +143,14 @@
 
 .touch-controls {
   position: relative;
-  width: 300px;
-  height: 250px;
+  width: 80%;
+  height: 200px;
   margin-top: auto;
   margin-bottom: auto;
 }
 
 .touch-controls button {
-  width: 100px;
+  width: 33%;
   aspect-ratio: 2;
 }
 
