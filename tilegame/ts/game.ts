@@ -18,7 +18,8 @@ let score = 0
 let highScore = Number(localStorage.getItem('highscore')) || 0
 
 let gameActive = false;
-let timer = 300
+// let timer = 300
+let timer = 99999
 
 let clockSpawn = rollOdds(25);
 let clockTypes = [2, 3, 5]
@@ -81,13 +82,8 @@ export function renderGrid() {
       gridElementHTML += plateCreator('floor')
     }
   })
-  const gridElement = document.querySelector('.supergrid')
-  const level = Math.min(Math.floor(score / 5) + 1, 5)
-  if (gridElement) gridElement.innerHTML = `
-    <div class="grid" style="${backgroundData[level - 1].floor};">
-      ${gridElementHTML}
-    </div>
-  `
+  const gridElement = document.querySelector('.grid')
+  if (gridElement) gridElement.innerHTML = gridElementHTML
   renderScores()
 
   if (playerPos.x === goalPos.x && playerPos.y === goalPos.y) {
@@ -95,13 +91,25 @@ export function renderGrid() {
     boost(1, '.score-boost')
     setValues()
     renderGrid()
+    setBackground('update')
   }
 
-  if (playerPos.x === clockPos.x && playerPos.y === clockPos.y && clockActive) {
+  if (playerPos.x === clockPos.x && playerPos.y === clockPos.y && clockActive && clockSpawn) {
     timer += (clockType * 10)
     clockActive = false
     boost(clockType, '.timer-boost')
   }
+}
+
+function setBackground(condition: string) {
+  const grid = document.querySelector('.grid')
+  grid?.classList.remove('level-1', 'level-2', 'level-3', 'level-4', 'level-5')
+  if (condition === 'update') {
+    const level = Math.min(Math.floor(score / 5) + 1, 5)
+    grid?.classList.add(`level-${level}`)
+  }
+
+  if (condition === 'reset') grid?.classList.add('level-1')
 }
 
 function plateCreator(icon: string) {
@@ -152,6 +160,7 @@ function playGame() {
   refreshButton?.classList.remove('hidden')
   setValues();
   renderGrid();
+  setBackground('reset')
   gameActive = true
   toggleButtons('start-game', 'disable')
   const clock = setInterval(() => {
@@ -175,7 +184,8 @@ function playGame() {
       score = 0
       gameActive = false
       clearInterval(clock)
-      timer = 300;
+      // timer = 300;
+      timer = 99999
     }
   }, 100)
 }

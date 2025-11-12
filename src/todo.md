@@ -1,2 +1,4 @@
-- Fix horizontal line issue in Tile Game
-- Fix mobile size issues in Tile Game
+- Rework Tile Game background to only update when the level changes
+    - Create classes to apply background image based on current level
+    - Create a class to detect when the level changes and update the background image
+- Reduce grid and supergrid back down to one div? No longer needed as background isn't being regenerated on every move
