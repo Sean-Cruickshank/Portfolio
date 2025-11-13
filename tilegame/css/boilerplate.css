@@ -4,6 +4,7 @@ html {
 }
 
 body {
+  position: relative;
   display: grid;
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
   font-size: 1rem;
@@ -45,6 +46,7 @@ button:hover {
 
   body {
     height: 100vh;
+    overflow: hidden;
   }
   
   button {
