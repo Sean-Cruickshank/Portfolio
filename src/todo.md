@@ -1,2 +1,3 @@
 - Fix colour picker jank on landscape mobile view
 - Fix vertical scrolling issues on portrait mobile view
+- Add Google Analytics for new Portfolio and Tile Game
