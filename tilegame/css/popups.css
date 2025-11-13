@@ -79,6 +79,7 @@
   transform: translateY(-50%);
   width: 30px !important;
   aspect-ratio: 0.5;
+  margin: 0 !important;
   padding: 0;
 }
 
@@ -93,10 +94,11 @@
 .about-content {
   position: relative;
   min-height: 200px;
-  width: 80%;
+  width: 70%;
   margin-inline: auto;
   margin-bottom: -20px;
   padding-bottom: 25px;
+  font-size: clamp(0.75rem, 0.4853rem + 0.7353vw, 1rem);
 }
 
 .about-page-count {
@@ -133,11 +135,10 @@
   .settings-buttons {
     width: calc(40% + 40px) !important;
   }
-}
 
-@media (max-width: 450px) {
   .popup {
-    top: 25%;
-    width: 75%;
+    top: 20px;
+    transform: translate(-50%, 0%);
+    width: 90%;
   }
 }
