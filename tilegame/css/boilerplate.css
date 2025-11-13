@@ -39,8 +39,7 @@ button:hover {
 
 @media (max-width: 450px) {
   body {
-    max-height: 100vh;
-    overflow-y: hidden;
+    overflow-y: hidden !important;
   }
   
   button {
