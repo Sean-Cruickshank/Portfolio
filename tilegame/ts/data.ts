@@ -28,8 +28,7 @@ export const aboutData = [
     <p>Reaching higher scores allows you to unlock new backgrounds and customisation options!</p>
   `,
   `
-    <p>The player icon can be moved between tiles either with the arrow keys, by swiping with your 
-    touchscreen, or by activating the touchpad from the settings menu</p>
+    <p>The player icon can be moved between tiles with the arrow keys on a keyboard or by swiping on a touchscreen</p>
     <div
         class="plate player-icon about-dummy"
         style="
@@ -80,11 +79,18 @@ export const popupData = [
     `
   }, {
     mode: 'settings',
+    // content: `
+    //   <div class="settings-section">
+    //     <h2>Settings</h2>
+    //     <button class="reset-score-button settings-buttons">Reset Highscore</button>
+    //     <button class="toggle-touchpad-button settings-buttons">Toggle Touchpad</button>
+    //   </div>
+    // `
     content: `
       <div class="settings-section">
         <h2>Settings</h2>
         <button class="reset-score-button settings-buttons">Reset Highscore</button>
-        <button class="toggle-touchpad-button settings-buttons">Toggle Touchpad</button>
+        <button class="clear-cache-button settings-buttons">Clear Cache</button>
       </div>
     `
   }, {

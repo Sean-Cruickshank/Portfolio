@@ -42,13 +42,12 @@
 }
 
 @media (max-width: 450px) {
-  
+
   .game {
     display: grid;
     grid-template-columns: 1fr;
     justify-content: center;
     height: 98vh;
-    overflow-y: hidden;
   }
 
   .game-tc {

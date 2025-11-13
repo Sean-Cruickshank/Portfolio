@@ -44,6 +44,7 @@ export function generatePopup(mode: string) {
 
   if (mode === 'settings') {
     contentElement?.querySelector(".reset-score-button")?.addEventListener('click', () => resetHighScore())
+    contentElement?.querySelector(".clear-cache-button")?.addEventListener('click', () => clearCache())
     toggleTouchpad()
   }
 
@@ -72,6 +73,14 @@ function closePopup(mode: string) {
   popupElement?.classList.add('hidden')
   toggleButtons(mode, 'enable')
   if (contentElement) contentElement.innerHTML = ''
+}
+
+function clearCache() {
+  localStorage.removeItem('custom-colour')
+  localStorage.removeItem('colour')
+  localStorage.removeItem('arrow')
+  localStorage.removeItem('highscore')
+  location.reload()
 }
 
 document.querySelector('.settings-button')?.addEventListener('click', () => generatePopup('settings'))

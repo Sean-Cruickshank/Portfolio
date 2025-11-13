@@ -38,6 +38,10 @@ button:hover {
 }
 
 @media (max-width: 450px) {
+  html {
+    overflow-y: hidden;
+  }
+  
   button {
     width: 40%;
   }
