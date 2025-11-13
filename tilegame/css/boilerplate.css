@@ -50,4 +50,8 @@ button:hover {
   button {
     width: 40%;
   }
+
+  .hidden-mobile {
+    opacity: 0;
+  }
 }

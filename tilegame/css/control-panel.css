@@ -76,6 +76,7 @@
   transition: 0.2s;
   border: none;
   z-index: 2;
+  border: solid 2px red;
 }
 
   .customiser-button:hover {

@@ -28,6 +28,7 @@ let clockActive = true
 const startGameButton = document.querySelector('.start-game-button');
 const stopGameButton = document.querySelector('.stop-game-button');
 const refreshButton = document.querySelector('.refresh-button')
+const customiserButton = document.querySelector('.customiser-button')
 
 const endMessageElement = document.querySelector('.end-message')
 
@@ -162,6 +163,7 @@ function playGame() {
   setBackground('reset')
   gameActive = true
   toggleButtons('start-game', 'disable')
+  customiserButton?.classList.add('hidden-mobile')
   const clock = setInterval(() => {
     if (timer > 0) {
       timer--;
@@ -179,6 +181,7 @@ function playGame() {
       stopGameButton?.classList.add('hidden');
       refreshButton?.classList.add('hidden')
       endMessageElement?.classList.remove('hidden')
+      customiserButton?.classList.remove('hidden-mobile')
       generatePopup('end-message')
       score = 0
       gameActive = false
