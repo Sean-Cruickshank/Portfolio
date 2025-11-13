@@ -76,6 +76,7 @@
   transition: 0.2s;
   border: none;
   z-index: 2;
+  align-items: flex-start;
 }
 
   .customiser-button:hover {

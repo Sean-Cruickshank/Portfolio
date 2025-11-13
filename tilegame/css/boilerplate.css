@@ -38,7 +38,8 @@ button:hover {
 }
 
 @media (max-width: 450px) {
-  html {
+  body {
+    max-height: 100vh;
     overflow-y: hidden;
   }
   
