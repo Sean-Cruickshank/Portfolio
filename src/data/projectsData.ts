@@ -44,8 +44,8 @@ export const projectsData: Project[] = [
   // },
   {
     title: "Tile Game",
-    link: "/tilegame/index.html", // for localhost
-    // link: "/tilegame", // for deployment
+    // link: "/tilegame/index.html", // for localhost
+    link: "/tilegame", // for deployment
     date: "2024",
     gallery: [
       {url: "images/gallery/level_one.png", orientation: 'square'},
