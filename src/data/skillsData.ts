@@ -35,7 +35,7 @@ export const skillsData = [
     title: 'backend',
     description: [
       'I spent a lot of time working with C# and .NET during my degree, and I have plans to expand on this in the near future',
-      'I have spent a bit of time working with PostgreSQL databases, and generally have a pretty solid grasp on SQL syntax',
+      'I have spent a bit of time working with PostgreSQL databases, and generally have a pretty solid grasp on SQL syntax, as well as experience handling queries and security policies',
       "I've gotten into Python more recently, and although I think I still have a lot to learn, I have had a lot of fun utilising it with different AI models"
     ],
     array: [

@@ -22,26 +22,26 @@ export const projectsData: Project[] = [
       "Utilises LLMs, custom system prompts, and RAG embedding to reliably retrieve information from a database and cite sources used"
     ]
   },
-  // {
-  //   title: "Country Quiz",
-  //   link: "/",
-  //   date: "2025",
-  //   gallery: [
-  //     {url: "images/gallery/level_one.png", orientation: 'square'},
-  //     {url: "images/gallery/level_five.png", orientation: 'square'},
-  //   ],
-  //   tags: [
-  //     {title: 'HTML', class: 'devicon-html5-plain-wordmark'},
-  //     {title: 'CSS', class: 'devicon-css3-plain-wordmark'},
-  //     {title: 'SASS', class: 'devicon-sass-original'},
-  //     {title: 'TypeScript', class: 'devicon-typescript-plain'},
-  //     {title: 'React', class: 'devicon-react-original'},
-  //   ],
-  //   description: [
-  //     "Pulls data from an API to randomly generate questions about the size and population of different countries",
-  //     "Includes player statistics and a match history so players can see themselves improve their geography knowledge!"
-  //   ]
-  // },
+  {
+    title: "Country Quiz",
+    link: "https://seanscountryquiz.netlify.app/",
+    date: "2025",
+    gallery: [
+      {url: "images/gallery/cq_stats.png", orientation: 'square'},
+      {url: "images/gallery/cq_match.png", orientation: 'square'},
+    ],
+    tags: [
+      {title: 'HTML', class: 'devicon-html5-plain-wordmark'},
+      {title: 'CSS', class: 'devicon-css3-plain-wordmark'},
+      {title: 'SASS', class: 'devicon-sass-original'},
+      {title: 'TypeScript', class: 'devicon-typescript-plain'},
+      {title: 'React', class: 'devicon-react-original'},
+    ],
+    description: [
+      "Randomly generates quiz-style questions about the size and population of different countries",
+      "Includes player statistics and a match history so players can see themselves improve their geography knowledge"
+    ]
+  },
   {
     title: "Tile Game",
     // link: "/tilegame/index.html", // for localhost
