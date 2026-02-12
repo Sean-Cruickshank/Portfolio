@@ -25,7 +25,7 @@ export const projectsData: Project[] = [
   {
     title: "Country Quiz",
     link: "https://seanscountryquiz.netlify.app/",
-    date: "2025",
+    date: "2026",
     gallery: [
       {url: "images/gallery/cq_stats.png", orientation: 'square'},
       {url: "images/gallery/cq_match.png", orientation: 'square'},
@@ -55,7 +55,7 @@ export const projectsData: Project[] = [
       {title: 'HTML', class: 'devicon-html5-plain-wordmark'},
       {title: 'CSS', class: 'devicon-css3-plain-wordmark'},
       {title: 'JavaScript', class: 'devicon-javascript-plain'},
-      {title: 'React', class: 'devicon-react-original'},
+      {title: 'TypeScript', class: 'devicon-typescript-plain'},
     ],
     description: [
       "A small tile-based game created in JavaScript. Collect keys to get as many points as you can before the timer runs out",
